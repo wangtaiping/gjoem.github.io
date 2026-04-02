@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hair & Body Care | Guangzhou Huabaotang</title>
+    <title>Cuidado del Cabello y Cuerpo | Guangzhou Huabaotang</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         :root { --accent: #2c3e50; --primary: #121212; --light: #f4f7f6; }
@@ -14,24 +14,18 @@
         nav a { text-decoration: none; color: #000; font-weight: 600; text-transform: uppercase; font-size: 0.75rem; margin-left: 15px; }
         .lang-switch { font-size: 0.8rem; font-weight: 600; margin-left: 20px; display: flex; gap: 10px; align-items: center; }
         .lang-switch a { text-decoration: none; color: var(--primary); padding: 2px 5px; transition: 0.3s; text-transform: none !important; margin-left: 0 !important; }
-        .lang-switch a:hover { color: var(--accent); }
         .lang-switch a.active { color: var(--accent); border-bottom: 1px solid var(--accent); }
-
         header { padding: 80px 5%; background: var(--accent); color: white; text-align: center; }
         header h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 15px; }
         header .hero-img { width: 100%; max-width: 600px; border-radius: 12px; margin-top: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-
         .container { padding: 40px 5%; }
         h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 30px; text-align: center; }
-
         .service-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
         .service-item { background: var(--light); padding: 30px; border-radius: 8px; text-align: center; }
         .service-item img { width: 100%; border-radius: 8px; margin-bottom: 20px; height: 300px; object-fit: cover; }
         .service-item h3 { margin-bottom: 15px; color: var(--accent); font-size: 1.4rem; }
-
         footer { background: #111; color: white; padding: 60px 5%; text-align: center; }
         .btn-mail { display: inline-block; padding: 12px 30px; background: #c5a059; color: white; text-decoration: none; text-transform: uppercase; font-size: 0.8rem; margin-top: 20px; }
-
         @media (min-width: 768px) {
             nav { padding: 15px 8%; }
             header h1 { font-size: 3.5rem; }
@@ -42,38 +36,42 @@
 </head>
 <body>
     <nav>
-        <a href="index.html" class="logo" style="text-decoration: none; color: inherit;">HUABAOTANG</a>
+        <a href="index_es.html" class="logo" style="text-decoration: none; color: inherit;">HUABAOTANG</a>
         <div>
-            <a href="index.html">Home</a>
-            <a href="skincare.html">Skincare</a>
-            <a href="haircare.html" style="color:#c5a059;">Hair Care</a>
+            <a href="index_es.html">Inicio</a>
+            <a href="skincare_es.html">Piel</a>
+            <a href="haircare_es.html" style="color:#c5a059;">Cabello</a>
+            <a href="fragrance_es.html">Fragancia</a>
+        </div>
+        <div class="lang-switch">
+            <a href="haircare.html">EN</a>
+            <a href="haircare_cn.html">中文</a>
+            <a href="haircare_es.html" class="active">ES</a>
         </div>
     </nav>
     <header>
-        <h1>Hair & Body Care</h1>
-        <p>Professional Salon-Grade Manufacturing Solutions</p>
-        <img src="https://sc02.alicdn.com/kf/A27d77752ff7d4fc28d05da25e3acabb2l.png" class="hero-img" alt="Hair Care Collection">
+        <h1>Cabello y Cuerpo</h1>
+        <p>Soluciones de Fabricación Profesionales de Grado Salón</p>
+        <img src="https://sc02.alicdn.com/kf/A27d77752ff7d4fc28d05da25e3acabb2l.png" class="hero-img" alt="Cuidado del Cabello">
     </header>
-
     <div class="container">
-        <h2>Core Manufacturing Services</h2>
+        <h2>Servicios Principales de Fabricación</h2>
         <div class="service-grid">
             <div class="service-item">
-                <img src="https://sc02.alicdn.com/kf/A42917c0e292e4ad38744679fa9df9565h.png" alt="Shampoo">
-                <h3>Scalp & Hair Health</h3>
-                <p>Professional shampoos and treatments for healthy, revitalized hair.</p>
+                <img src="https://sc02.alicdn.com/kf/A42917c0e292e4ad38744679fa9df9565h.png" alt="Champú">
+                <h3>Salud del Cuero Cabelludo</h3>
+                <p>Champús y tratamientos profesionales para un cabello sano y revitalizado.</p>
             </div>
             <div class="service-item">
-                <img src="https://sc02.alicdn.com/kf/A1207dc973379469bb7c828d94db7b78fT.png" alt="Body Lotion">
-                <h3>Luxury Body Care</h3>
-                <p>Nourishing body lotions and washes with premium botanical extracts.</p>
+                <img src="https://sc02.alicdn.com/kf/A1207dc973379469bb7c828d94db7b78fT.png" alt="Loción">
+                <h3>Cuidado Corporal de Lujo</h3>
+                <p>Lociones y jabones corporales nutritivos con extractos botánicos premium.</p>
             </div>
         </div>
     </div>
-
     <footer>
-        <h2>Elevate Your Product Line</h2>
-        <a href="mailto:wangtp8254@gmail.com" class="btn-mail">Contact Us</a>
+        <h2>Eleve su Línea de Productos</h2>
+        <a href="mailto:wangtp8254@gmail.com" class="btn-mail">Contáctenos</a>
     </footer>
 </body>
 </html>

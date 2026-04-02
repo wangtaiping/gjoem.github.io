@@ -87,6 +87,11 @@
         .footer-links a { color: #888; text-decoration: none; font-size: 0.75rem; text-transform: uppercase; }
         .copyright { margin-top: 40px; font-size: 0.75rem; }
 
+        .lang-switch { font-size: 0.8rem; font-weight: 600; margin-left: 20px; display: flex; gap: 10px; align-items: center; }
+        .lang-switch a { text-decoration: none; color: var(--primary); padding: 2px 5px; transition: 0.3s; text-transform: none !important; font-weight: 700 !important; }
+        .lang-switch a:hover { color: var(--accent); }
+        .lang-switch a.active { color: var(--accent); border-bottom: 1px solid var(--accent); }
+
         /* Mobile Specific Adjustments */
         @media (min-width: 768px) {
             nav { padding: 15px 8%; }

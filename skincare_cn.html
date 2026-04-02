@@ -1,42 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skincare Innovation | Guangzhou Huabaotang</title>
+    <title>护肤创新 | 广州华宝堂</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         :root { --accent: #c5a059; --primary: #121212; --light: #f9f9f9; }
         * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family: 'Montserrat', sans-serif; line-height: 1.6; color: var(--primary); }
+        body { font-family: 'Montserrat', "PingFang SC", "Microsoft YaHei", sans-serif; line-height: 1.6; color: var(--primary); }
         nav { padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
         nav .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; }
-        nav a { text-decoration: none; color: #000; font-weight: 600; text-transform: uppercase; font-size: 0.75rem; margin-left: 15px; }
+        nav a { text-decoration: none; color: #000; font-weight: 600; text-transform: uppercase; font-size: 0.8rem; margin-left: 15px; }
         .lang-switch { font-size: 0.8rem; font-weight: 600; margin-left: 20px; display: flex; gap: 10px; align-items: center; }
         .lang-switch a { text-decoration: none; color: var(--primary); padding: 2px 5px; transition: 0.3s; text-transform: none !important; margin-left: 0 !important; }
-        .lang-switch a:hover { color: var(--accent); }
         .lang-switch a.active { color: var(--accent); border-bottom: 1px solid var(--accent); }
-        
         header { padding: 60px 5%; background: var(--light); text-align: center; }
         header h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 15px; }
         header .hero-img { width: 100%; max-width: 600px; border-radius: 12px; margin-top: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-
         .container { padding: 40px 5%; }
         h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 30px; text-align: center; }
-
         .product-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
         .product-card { border: 1px solid #eee; padding: 20px; border-radius: 8px; text-align: center; }
         .product-card img { width: 100%; border-radius: 8px; margin-bottom: 20px; height: 300px; object-fit: cover; }
         .product-card h3 { color: var(--accent); margin-bottom: 15px; font-size: 1.4rem; }
-
         .tech-table-wrapper { overflow-x: auto; margin-top: 40px; }
         table { width: 100%; min-width: 500px; border-collapse: collapse; }
         table th, table td { border: 1px solid #ddd; padding: 12px; text-align: left; font-size: 0.85rem; }
         table th { background: #f2f2f2; text-transform: uppercase; }
-
         footer { background: #111; color: white; padding: 60px 5%; text-align: center; }
-        .btn-mail { display: inline-block; padding: 12px 30px; background: var(--accent); color: white; text-decoration: none; text-transform: uppercase; font-size: 0.8rem; margin-top: 20px; }
-
+        .btn-mail { display: inline-block; padding: 12px 30px; background: var(--accent); color: white; text-decoration: none; font-size: 0.9rem; margin-top: 20px; }
         @media (min-width: 768px) {
             nav { padding: 15px 8%; }
             header h1 { font-size: 3.5rem; }
@@ -47,62 +40,64 @@
 </head>
 <body>
     <nav>
-        <a href="index.html" class="logo" style="text-decoration: none; color: inherit;">HUABAOTANG</a>
+        <a href="index_cn.html" class="logo" style="text-decoration: none; color: inherit;">华宝堂</a>
         <div>
-            <a href="index.html">Home</a>
-            <a href="skincare.html" style="color:var(--accent);">Skincare</a>
-            <a href="haircare.html">Hair Care</a>
-            <a href="fragrance.html">Fragrance</a>
+            <a href="index_cn.html">首页</a>
+            <a href="skincare_cn.html" style="color:var(--accent);">护肤</a>
+            <a href="haircare_cn.html">美发</a>
+            <a href="fragrance_cn.html">香氛</a>
+        </div>
+        <div class="lang-switch">
+            <a href="skincare.html">EN</a>
+            <a href="skincare_cn.html" class="active">中文</a>
+            <a href="skincare_es.html">ES</a>
         </div>
     </nav>
     <header>
-        <h1>Skincare Innovation</h1>
-        <p>Scientific OEM/ODM Formulations for Global Brands</p>
-        <img src="https://sc02.alicdn.com/kf/A09566ed5e3094e2bb4aa261c77cb4e5bM.png" class="hero-img" alt="Skincare Collection">
+        <h1>护肤创新</h1>
+        <p>为全球品牌提供科学的 OEM/ODM 配方</p>
+        <img src="https://sc02.alicdn.com/kf/A09566ed5e3094e2bb4aa261c77cb4e5bM.png" class="hero-img" alt="护肤系列">
     </header>
-
     <div class="container">
-        <h2>Expert Product Categories</h2>
+        <h2>专业产品类别</h2>
         <div class="product-grid">
             <div class="product-card">
-                <img src="https://sc02.alicdn.com/kf/A697e7ac8b4114d22af683df3029b0792p.png" alt="Serum">
-                <h3>Bio-Active Serums</h3>
-                <p>Concentrated formulas for anti-aging and barrier repair.</p>
+                <img src="https://sc02.alicdn.com/kf/A697e7ac8b4114d22af683df3029b0792p.png" alt="精华">
+                <h3>生物活性精华</h3>
+                <p>浓缩配方，专注于抗衰老和屏障修护。</p>
             </div>
             <div class="product-card">
-                <img src="https://sc02.alicdn.com/kf/A65f64d293cc048f48f591de9226c4045U.png" alt="Face Mask">
-                <h3>Facial Masks</h3>
-                <p>Innovative sheet and clay masks for deep treatment.</p>
+                <img src="https://sc02.alicdn.com/kf/A65f64d293cc048f48f591de9226c4045U.png" alt="面膜">
+                <h3>功效性面膜</h3>
+                <p>创新的面贴膜和泥膜，提供深层护理。</p>
             </div>
             <div class="product-card">
-                <img src="https://sc01.alicdn.com/kf/A197ce1dd8d1a4034aec80c7113403903i.jpg" alt="Rich Cream">
-                <h3>Advanced Creams</h3>
-                <p>Moisturizers with Peptides and botanical stem cells.</p>
+                <img src="https://sc01.alicdn.com/kf/A197ce1dd8d1a4034aec80c7113403903i.jpg" alt="面霜">
+                <h3>高级修护霜</h3>
+                <p>含有多肽和植物干细胞的保湿面霜。</p>
             </div>
         </div>
-
         <div class="tech-table-wrapper">
             <table>
                 <thead>
                     <tr>
-                        <th>Product</th>
-                        <th>Standard MOQ</th>
-                        <th>Sampling</th>
-                        <th>Capacity</th>
+                        <th>产品类型</th>
+                        <th>标准起订量 (MOQ)</th>
+                        <th>打样周期</th>
+                        <th>日产能</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>Face Serums</td><td>1,000 units</td><td>3-5 Days</td><td>50k/day</td></tr>
-                    <tr><td>Moisturizers</td><td>2,000 units</td><td>5-7 Days</td><td>35k/day</td></tr>
-                    <tr><td>Sheet Masks</td><td>10,000 units</td><td>3 Days</td><td>200k/day</td></tr>
+                    <tr><td>面部精华</td><td>1,000 件</td><td>3-5 天</td><td>5万件/日</td></tr>
+                    <tr><td>保湿霜</td><td>2,000 件</td><td>5-7 天</td><td>3.5万件/日</td></tr>
+                    <tr><td>面膜</td><td>10,000 件</td><td>3 天</td><td>20万件/日</td></tr>
                 </tbody>
             </table>
         </div>
     </div>
-
     <footer>
-        <h2>Start Your Brand with Us</h2>
-        <a href="mailto:wangtp8254@gmail.com" class="btn-mail">Get Started</a>
+        <h2>与我们共同开启您的品牌之路</h2>
+        <a href="mailto:wangtp8254@gmail.com" class="btn-mail">立即开始</a>
     </footer>
 </body>
 </html>
