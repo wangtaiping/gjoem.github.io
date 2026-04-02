@@ -3,64 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fine Fragrance & Aromatherapy OEM/ODM | Guangzhou Huabaotang</title>
+    <title>Fragrance & Aromatherapy | Guangzhou Huabaotang</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         :root { --accent: #8e44ad; --primary: #1a1a1a; --light: #fffaf0; }
-        body { font-family: 'Montserrat', sans-serif; line-height: 1.7; color: var(--primary); margin: 0; background: var(--light); }
-        nav { padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; background: #fff; }
-        nav a { text-decoration: none; color: #000; font-weight: 600; text-transform: uppercase; font-size: 0.8rem; margin-left: 20px; }
-        header { padding: 120px 10%; text-align: center; background: url('https://sc01.alicdn.com/kf/A0577b3c15bda49719b5a201b647a0da6U.jpg') no-repeat center center/cover; color: white; position: relative; }
-        header::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1; }
-        header .content { position: relative; z-index: 2; }
-        .container { padding: 80px 10%; background: white; margin-top: -50px; position: relative; z-index: 3; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .fragrance-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .frag-item { text-align: center; padding: 20px; }
-        .frag-item h3 { margin-top: 15px; font-family: 'Playfair Display', serif; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: 'Montserrat', sans-serif; line-height: 1.6; color: var(--primary); }
+        nav { padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        nav .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; }
+        nav a { text-decoration: none; color: #000; font-weight: 600; text-transform: uppercase; font-size: 0.75rem; margin-left: 15px; }
+
+        header { padding: 80px 5%; background: #1a1a1a; color: white; text-align: center; }
+        header h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 15px; }
+        header .hero-img { width: 100%; max-width: 600px; border-radius: 12px; margin-top: 30px; border: 2px solid white; }
+
+        .container { padding: 60px 5%; background: white; margin-top: -40px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 30px; text-align: center; }
+
+        .fragrance-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
+        .frag-item { text-align: center; }
+        .frag-item img { width: 100%; border-radius: 10px; height: 350px; object-fit: cover; margin-bottom: 20px; }
+        .frag-item h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 15px; }
+
+        footer { background: #111; color: white; padding: 60px 5%; text-align: center; border-radius: 0 0 10px 10px; }
+        .btn-mail { display: inline-block; padding: 12px 30px; background: #c5a059; color: white; text-decoration: none; text-transform: uppercase; font-size: 0.8rem; margin-top: 20px; }
+
+        @media (min-width: 768px) {
+            nav { padding: 15px 8%; }
+            header h1 { font-size: 3.5rem; }
+            .fragrance-grid { grid-template-columns: repeat(3, 1fr); }
+            .container { padding: 80px 10%; }
+        }
     </style>
 </head>
 <body>
     <nav>
-        <div style="font-weight:bold; letter-spacing:2px;">HUABAOTANG</div>
+        <div class="logo">HUABAOTANG</div>
         <div>
             <a href="index.html">Home</a>
             <a href="skincare.html">Skincare</a>
-            <a href="haircare.html">Hair Care</a>
             <a href="fragrance.html" style="color:var(--accent);">Fragrance</a>
         </div>
     </nav>
     <header>
-        <div class="content">
-            <h1 style="color:white; font-size:3.5rem;">Scent & Soul</h1>
-            <p>Luxury Perfumes, Reed Diffusers, and Custom Aromatherapy Blends</p>
-            <img src="https://sc01.alicdn.com/kf/Adc24e35e1dd245bb89971b47150fcf78i.jpg" alt="Fragrance Collection" style="width: 400px; border-radius: 10px; margin-top: 30px; border: 2px solid white;">
-        </div>
+        <h1>Scent & Soul</h1>
+        <p>Luxury Perfume & Aromatherapy Solutions</p>
+        <img src="https://sc02.alicdn.com/kf/A60c1a9d78732436f84e34436e85e6a5bS.png" class="hero-img" alt="Luxury Perfume">
     </header>
+
     <div class="container">
         <h2>Our Fragrance Expertise</h2>
-        <p>At Guangzhou Huabaotang, we believe scent is the most powerful connection to the soul. We collaborate with world-class fragrance houses to provide premium olfactive experiences for your brand.</p>
-        
-        <div class="fragrance-grid" style="margin-top:50px;">
+        <div class="fragrance-grid">
             <div class="frag-item">
-                <h3>Fine Perfumes</h3>
-                <p>EDP, EDT, and Parfum Extraits. Custom bottle shapes, luxury caps, and high-quality sprayers.</p>
+                <img src="https://sc02.alicdn.com/kf/A60c1a9d78732436f84e34436e85e6a5bS.png" alt="Fine Perfume">
+                <h3>Fine Fragrance</h3>
+                <p>High-end Eau de Parfum with custom bottle and packaging design.</p>
             </div>
             <div class="frag-item">
-                <h3>Home Aromatherapy</h3>
-                <p>Sophisticated Reed Diffusers, Ultrasonic Oil Blends, and Luxury Room Sprays.</p>
+                <img src="https://sc02.alicdn.com/kf/A3f7abecb7b1148068770eedba0252f0eu.png" alt="Aromatherapy">
+                <h3>Home Scenting</h3>
+                <p>Luxury reed diffusers and essential oil blends for home and hotel.</p>
             </div>
             <div class="frag-item">
-                <h3>Scented Candles</h3>
-                <p>Natural Soy & Beeswax blends. Proprietary wick technology for a clean, long-lasting burn.</p>
+                <img src="https://sc01.alicdn.com/kf/Adc24e35e1dd245bb89971b47150fcf78i.jpg" alt="Aromatherapy Shelf">
+                <h3>Custom Candles</h3>
+                <p>Premium scented soy candles with proprietary fragrance oils.</p>
             </div>
-        </div>
-
-        <h2 style="margin-top:80px;">Global IFRA Standards</h2>
-        <p>All our fragrance formulations are strictly compliant with IFRA (International Fragrance Association) guidelines, ensuring safety and quality for global distribution. We provide full documentation for international shipping of alcohol-based perfumes.</p>
-        
-        <div style="text-align:center; margin-top:60px;">
-            <a href="mailto:wangtp8254@gmail.com" style="background:var(--primary); color:white; padding:15px 40px; text-decoration:none; display:inline-block; letter-spacing:2px;">INQUIRE ABOUT FRAGRANCE OEM</a>
         </div>
     </div>
+
+    <footer>
+        <h2>Create Your Signature Scent</h2>
+        <p>Professional Fragrance OEM/ODM Services</p>
+        <a href="mailto:wangtp8254@gmail.com" class="btn-mail">Inquire Now</a>
+    </footer>
 </body>
 </html>
