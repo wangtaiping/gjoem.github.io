@@ -16,22 +16,17 @@
         .lang-switch a { text-decoration: none; color: var(--primary); padding: 2px 5px; transition: 0.3s; text-transform: none !important; margin-left: 0 !important; }
         .lang-switch a:hover { color: var(--accent); }
         .lang-switch a.active { color: var(--accent); border-bottom: 1px solid var(--accent); }
-
         header { padding: 80px 5%; background: #1a1a1a; color: white; text-align: center; }
         header h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 15px; }
         header .hero-img { width: 100%; max-width: 600px; border-radius: 12px; margin-top: 30px; border: 2px solid white; }
-
         .container { padding: 60px 5%; background: white; margin-top: -40px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 30px; text-align: center; }
-
         .fragrance-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
         .frag-item { text-align: center; }
         .frag-item img { width: 100%; border-radius: 10px; height: 350px; object-fit: cover; margin-bottom: 20px; }
         .frag-item h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 15px; }
-
         footer { background: #111; color: white; padding: 60px 5%; text-align: center; }
         .btn-mail { display: inline-block; padding: 12px 30px; background: #c5a059; color: white; text-decoration: none; text-transform: uppercase; font-size: 0.8rem; margin-top: 20px; }
-
         @media (min-width: 768px) {
             nav { padding: 15px 8%; }
             header h1 { font-size: 3.5rem; }
@@ -48,13 +43,17 @@
             <a href="skincare.html">Skincare</a>
             <a href="fragrance.html" style="color:var(--accent);">Fragrance</a>
         </div>
+        <div class="lang-switch">
+            <a href="fragrance.html" class="active">EN</a>
+            <a href="fragrance_cn.html">中文</a>
+            <a href="fragrance_es.html">ES</a>
+        </div>
     </nav>
     <header>
         <h1>Scent & Soul</h1>
         <p>Luxury Perfume & Aromatherapy Solutions</p>
         <img src="https://sc02.alicdn.com/kf/A60c1a9d78732436f84e34436e85e6a5bS.png" class="hero-img" alt="Luxury Perfume">
     </header>
-
     <div class="container">
         <h2>Our Fragrance Expertise</h2>
         <div class="fragrance-grid">
@@ -75,7 +74,6 @@
             </div>
         </div>
     </div>
-
     <footer>
         <h2>Create Your Signature Scent</h2>
         <a href="mailto:wangtp8254@gmail.com" class="btn-mail">Inquire Now</a>

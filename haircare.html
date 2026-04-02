@@ -16,22 +16,17 @@
         .lang-switch a { text-decoration: none; color: var(--primary); padding: 2px 5px; transition: 0.3s; text-transform: none !important; margin-left: 0 !important; }
         .lang-switch a:hover { color: var(--accent); }
         .lang-switch a.active { color: var(--accent); border-bottom: 1px solid var(--accent); }
-
         header { padding: 80px 5%; background: var(--accent); color: white; text-align: center; }
         header h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 15px; }
         header .hero-img { width: 100%; max-width: 600px; border-radius: 12px; margin-top: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-
         .container { padding: 40px 5%; }
         h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 30px; text-align: center; }
-
         .service-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
         .service-item { background: var(--light); padding: 30px; border-radius: 8px; text-align: center; }
         .service-item img { width: 100%; border-radius: 8px; margin-bottom: 20px; height: 300px; object-fit: cover; }
         .service-item h3 { margin-bottom: 15px; color: var(--accent); font-size: 1.4rem; }
-
         footer { background: #111; color: white; padding: 60px 5%; text-align: center; }
         .btn-mail { display: inline-block; padding: 12px 30px; background: #c5a059; color: white; text-decoration: none; text-transform: uppercase; font-size: 0.8rem; margin-top: 20px; }
-
         @media (min-width: 768px) {
             nav { padding: 15px 8%; }
             header h1 { font-size: 3.5rem; }
@@ -48,13 +43,17 @@
             <a href="skincare.html">Skincare</a>
             <a href="haircare.html" style="color:#c5a059;">Hair Care</a>
         </div>
+        <div class="lang-switch">
+            <a href="haircare.html" class="active">EN</a>
+            <a href="haircare_cn.html">中文</a>
+            <a href="haircare_es.html">ES</a>
+        </div>
     </nav>
     <header>
         <h1>Hair & Body Care</h1>
         <p>Professional Salon-Grade Manufacturing Solutions</p>
         <img src="https://sc02.alicdn.com/kf/A27d77752ff7d4fc28d05da25e3acabb2l.png" class="hero-img" alt="Hair Care Collection">
     </header>
-
     <div class="container">
         <h2>Core Manufacturing Services</h2>
         <div class="service-grid">
@@ -70,7 +69,6 @@
             </div>
         </div>
     </div>
-
     <footer>
         <h2>Elevate Your Product Line</h2>
         <a href="mailto:wangtp8254@gmail.com" class="btn-mail">Contact Us</a>
