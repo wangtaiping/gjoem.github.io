@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO Meta Tags -->
+    <title>Guangzhou Huabaotang | Expert Cosmetics, Hair Care & Fragrance OEM/ODM Manufacturer</title>
+    <meta name="description" content="Guangzhou Huabaotang is a premier GMPC & ISO certified cosmetics factory. Professional OEM/ODM for Skincare, Hair Care, Body Care, Perfume, and Aromatherapy. 5000+ formulas.">
+    <meta name="keywords" content="Skincare OEM China, Hair Care Manufacturer, Perfume ODM, Aromatherapy Private Label, Guangzhou Cosmetics Factory, Selina.coco">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #121212;
+            --secondary: #4a4a4a;
+            --accent: #c5a059; /* Modern Muted Gold */
+            --light: #f4f4f4;
+            --white: #ffffff;
+            --gray: #888;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', sans-serif; color: var(--primary); line-height: 1.7; background: var(--white); overflow-x: hidden; }
+        
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 400; }
+
+        /* Navigation */
+        nav { 
+            position: fixed; top: 0; width: 100%; padding: 20px 8%; 
+            display: flex; justify-content: space-between; align-items: center; 
+            background: rgba(255, 255, 255, 0.95); z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        nav .logo { font-size: 1.4rem; font-weight: 700; color: var(--primary); letter-spacing: 2px; }
+        nav ul { list-style: none; display: flex; gap: 35px; }
+        nav ul li a { text-decoration: none; color: var(--primary); font-size: 0.85rem; text-transform: uppercase; font-weight: 600; transition: 0.3s; }
+        nav ul li a:hover { color: var(--accent); }
+
+        /* Hero Section */
+        header { 
+            height: 100vh; 
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://sc01.alicdn.com/kf/Ab4eb3e8b9c6945379bb8b632f236e484q.jpg') no-repeat center center/cover;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: var(--white);
+            padding: 0 10%;
+        }
+        header h1 { font-size: 4.5rem; margin-bottom: 25px; letter-spacing: 5px; }
+        header p { font-size: 1.3rem; max-width: 800px; margin: 0 auto 40px; font-weight: 300; }
+        .btn-main { padding: 15px 45px; background: var(--accent); color: white; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
+        .btn-main:hover { background: #a6854a; }
+
+        /* Section Styling */
+        section { padding: 120px 10%; }
+        .section-header { text-align: center; margin-bottom: 80px; }
+        .section-header span { color: var(--accent); text-transform: uppercase; letter-spacing: 4px; font-size: 0.8rem; display: block; margin-bottom: 10px; }
+        .section-header h2 { font-size: 3rem; position: relative; padding-bottom: 20px; }
+        .section-header h2::after { content: ''; width: 60px; height: 2px; background: var(--accent); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
+
+        /* Category Detail Blocks */
+        .category-detail { display: flex; align-items: center; gap: 80px; margin-bottom: 120px; }
+        .category-detail:nth-child(even) { flex-direction: row-reverse; }
+        .category-image { flex: 1.2; position: relative; }
+        .category-image img { width: 100%; border-radius: 5px; box-shadow: 30px 30px 0 var(--light); }
+        .category-text { flex: 1; }
+        .category-text h3 { font-size: 2.2rem; margin-bottom: 25px; color: var(--primary); }
+        .category-text ul { list-style: none; margin-bottom: 30px; }
+        .category-text ul li { margin-bottom: 12px; font-size: 1rem; color: var(--secondary); display: flex; align-items: center; }
+        .category-text ul li::before { content: '◈'; color: var(--accent); margin-right: 15px; font-size: 0.8rem; }
+        .category-text p { color: var(--secondary); margin-bottom: 25px; }
+
+        /* Features/Stats */
+        .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--light); text-align: center; padding: 80px 10%; }
+        .feature-item h4 { font-size: 2.5rem; color: var(--accent); margin-bottom: 10px; }
+        .feature-item p { font-size: 0.85rem; text-transform: uppercase; color: var(--secondary); letter-spacing: 1px; }
+
+        /* Process Steps */
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin-top: 50px; }
+        .process-step { text-align: center; padding: 20px; }
+        .process-step .step-num { font-size: 3rem; color: #eee; font-family: 'Playfair Display', serif; display: block; margin-bottom: -20px; }
+        .process-step h4 { font-size: 1.2rem; margin-bottom: 15px; position: relative; z-index: 1; }
+
+        /* Footer */
+        footer { background: #0a0a0a; color: #999; padding: 100px 10% 40px; text-align: center; }
+        footer h2 { color: white; font-size: 2.5rem; margin-bottom: 30px; }
+        footer .contact-info { margin: 40px 0; color: #ccc; }
+        footer .contact-info p { margin-bottom: 15px; font-size: 1.1rem; }
+        .footer-links { display: flex; justify-content: center; gap: 40px; margin-top: 50px; border-top: 1px solid #222; padding-top: 40px; }
+        .footer-links a { color: #666; text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        @media (max-width: 1024px) {
+            .category-detail, .category-detail:nth-child(even) { flex-direction: column; gap: 40px; text-align: center; }
+            .category-text ul li { justify-content: center; }
+            header h1 { font-size: 2.8rem; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">HUABAOTANG</div>
+        <ul>
+            <li><a href="#skincare">Skincare</a></li>
+            <li><a href="#haircare">Hair & Body</a></li>
+            <li><a href="#fragrance">Fragrance</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <div class="container">
+            <span>Guangzhou, China | Established Biotechnology</span>
+            <h1>The Apex of Beauty Manufacturing</h1>
+            <p>Guangzhou Huabaotang provides world-class OEM/ODM solutions for international brands. We specialize in scientific skincare, professional hair care, and luxury fine fragrances.</p>
+            <a href="#contact" class="btn-main">Request Your Sample Kit</a>
+        </div>
+    </header>
+
+    <!-- Skincare Deep Detail -->
+    <section id="skincare">
+        <div class="section-header">
+            <span>Clinical Grade Innovation</span>
+            <h2>Skincare OEM/ODM</h2>
+        </div>
+        <div class="category-detail">
+            <div class="category-image">
+                <img src="https://sc01.alicdn.com/kf/A477f63d898b74b78b8b2fe927912cbfam.jpg" alt="Skincare R&D">
+            </div>
+            <div class="category-text">
+                <h3>Bio-Active Formulation</h3>
+                <p>Leveraging the R&D power behind the <strong>Selina.coco</strong> brand, we create skincare that delivers visible results. Our formulas are strictly tested for stability and international compliance (FDA/EU).</p>
+                <ul>
+                    <li><strong>Face Care:</strong> Anti-aging Serums, Barrier Repair Creams, Hydrating Toners.</li>
+                    <li><strong>Specialty:</strong> Vitamin C Brightening, Bakuchiol Retinol-Alternative, Niacinamide Treatments.</li>
+                    <li><strong>Sun Protection:</strong> Hybrid SPF 50+ Sunscreens and Tinted Moisturizers.</li>
+                    <li><strong>Masks:</strong> Sheet masks, Bio-cellulose, and Mineral Clay treatments.</li>
+                </ul>
+                <p><em>Focus: Clean Beauty, Vegan, and Cruelty-Free options available.</em></p>
+            </div>
+        </div>
+    </section>
+
+    <div class="features-grid">
+        <div class="feature-item"><h4>GMPC</h4><p>Global Standard Factory</p></div>
+        <div class="feature-item"><h4>5000+</h4><p>Mature Proven Formulas</p></div>
+        <div class="feature-item"><h4>ISO</h4><p>22716 Quality Certified</p></div>
+        <div class="feature-item"><h4>100K</h4><p>Cleanroom Environment</p></div>
+    </div>
+
+    <!-- Hair & Body Deep Detail -->
+    <section id="haircare" style="background: #fafafa;">
+        <div class="section-header">
+            <span>Professional & Luxury Range</span>
+            <h2>Hair & Body Solutions</h2>
+        </div>
+        <div class="category-detail">
+            <div class="category-text">
+                <h3>Professional Performance</h3>
+                <p>We manufacture salon-grade hair care and luxury body treatments that transform the daily routine into a spa-like experience. Customizable scents and textures tailored for your target market.</p>
+                <ul>
+                    <li><strong>Hair Care:</strong> Sulfate-Free Shampoo, Deep Conditioning Masks, Scalp Detox Serums.</li>
+                    <li><strong>Body Care:</strong> Exfoliating Body Scrubs, Niacinamide Body Lotions, Scented Body Wash.</li>
+                    <li><strong>Men's Grooming:</strong> Beard Oils, Pomades, and 3-in-1 Performance Washes.</li>
+                    <li><strong>Hand & Foot:</strong> High-urea repair creams and luxury botanical hand soaps.</li>
+                </ul>
+            </div>
+            <div class="category-image">
+                <img src="https://sc01.alicdn.com/kf/A774ba750f20044f39e2855c10c4655a7P.jpg" alt="Hair Care Manufacturing">
+            </div>
+        </div>
+    </section>
+
+    <!-- Fragrance Deep Detail -->
+    <section id="fragrance">
+        <div class="section-header">
+            <span>The Sensory Experience</span>
+            <h2>Fragrance & Aromatherapy</h2>
+        </div>
+        <div class="category-detail">
+            <div class="category-image">
+                <img src="https://sc01.alicdn.com/kf/A0577b3c15bda49719b5a201b647a0da6U.jpg" alt="Fragrance Showroom">
+            </div>
+            <div class="category-text">
+                <h3>Artisan Scent Creation</h3>
+                <p>From fine French-style perfumes to sophisticated home scents, our fragrance department uses premium oils to create long-lasting, evocative sensory experiences.</p>
+                <ul>
+                    <li><strong>Perfume:</strong> Extrait de Parfum, EDP, and Body Mists with custom bottle designs.</li>
+                    <li><strong>Home Scents:</strong> Luxury Reed Diffusers, Scented Soy Candles, Room Sprays.</li>
+                    <li><strong>Essential Oils:</strong> Pure blends for aromatherapy and therapeutic uses.</li>
+                    <li><strong>Hotel Amenities:</strong> Branded luxury toiletries for high-end hospitality.</li>
+                </ul>
+                <p><em>Full support for IFRA standards and safe synthetic/natural blends.</em></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- OEM Process -->
+    <section id="process" style="background: var(--light);">
+        <div class="section-header">
+            <span>Collaborative Excellence</span>
+            <h2>Our OEM/ODM Journey</h2>
+        </div>
+        <div class="process-grid">
+            <div class="process-step">
+                <span class="step-num">01</span>
+                <h4>Consultation</h4>
+                <p>We discuss your brand vision, target market, and product requirements.</p>
+            </div>
+            <div class="process-step">
+                <span class="step-num">02</span>
+                <h4>Formulation</h4>
+                <p>Our lab develops or selects a formula that matches your specific criteria.</p>
+            </div>
+            <div class="process-step">
+                <span class="step-num">03</span>
+                <h4>Sampling</h4>
+                <p>Testing and refinement of samples until they meet your 100% satisfaction.</p>
+            </div>
+            <div class="process-step">
+                <span class="step-num">04</span>
+                <h4>Production</h4>
+                <p>High-efficiency mass production in our GMPC-certified facility.</p>
+            </div>
+            <div class="process-step">
+                <span class="step-num">05</span>
+                <h4>Quality & Delivery</h4>
+                <p>Final QC testing, regulatory compliance check, and global shipping.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <h2>Your Global Partner in Beauty</h2>
+            <div class="contact-info">
+                <p>Contact Person: <strong>Taiping Wang</strong></p>
+                <p>Email: <a href="mailto:wangtp8254@gmail.com" style="color:var(--accent); text-decoration: none;">wangtp8254@gmail.com</a></p>
+                <p>Location: Guangzhou, Guangdong, China</p>
+            </div>
+            <a href="mailto:wangtp8254@gmail.com" class="btn-main">Request OEM/ODM Quote</a>
+            <div class="footer-links">
+                <a href="#skincare">Skincare</a>
+                <a href="#haircare">Hair Care</a>
+                <a href="#fragrance">Fragrance</a>
+                <a href="#process">Process</a>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Guangzhou Huabaotang Biotechnology Service Co., Ltd. <br>
+                Official Website: www.gjoem.com
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
