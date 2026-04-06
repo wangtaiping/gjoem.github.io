@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
         modalImg.src = imgSrc;
         modalTitle.innerText = title;
         modalDesc.innerText = desc;
-        modal.style.display = 'block';
+        modal.style.display = 'flex';
         document.body.style.overflow = 'hidden'; // Prevent scroll
         currentScale = 1;
         modalImg.style.transform = `scale(${currentScale})`;
