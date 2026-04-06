@@ -151,6 +151,7 @@
         <div class="menu-toggle" id="mobile-menu">☰</div>
         <ul id="nav-list">
             <li><a href="skincare_es.html">Piel</a></li>
+            <li><a href="bodycare_es.html">Cuerpo</a></li>
             <li><a href="haircare_es.html">Cabello</a></li>
             <li><a href="fragrance_es.html">Fragancia</a></li>
             <li><a href="#factory">Fábrica</a></li>
@@ -179,21 +180,28 @@
         </div>
         <div class="categories">
             <a href="skincare_es.html" class="cat-card">
-                <img src="https://sc02.alicdn.com/kf/A09566ed5e3094e2bb4aa261c77cb4e5bM.png" alt="Cuidado de la Piel">
+                <img src="https://sc02.alicdn.com/kf/Af7b7d8cfeae9411bbaf60007a553e640z.png" alt="Cuidado de la Piel">
                 <div class="cat-info">
                     <h3>Piel y Biotecnología</h3>
                     <p>Sueros de grado clínico y soluciones antienvejecimiento.</p>
                 </div>
             </a>
-            <a href="haircare_es.html" class="cat-card">
-                <img src="https://sc02.alicdn.com/kf/A27d77752ff7d4fc28d05da25e3acabb2l.png" alt="Cuidado del Cabello">
+            <a href="bodycare_es.html" class="cat-card">
+                <img src="https://sc02.alicdn.com/kf/A976f54628d8e431c9ed4f4ffdf437e16o.png" alt="Colección Cuerpo">
                 <div class="cat-info">
-                    <h3>Cabello y Cuerpo</h3>
+                    <h3>Cuerpo y Spa</h3>
+                    <p>Exfoliantes, aceites de lujo y rituales de bienestar.</p>
+                </div>
+            </a>
+            <a href="haircare_es.html" class="cat-card">
+                <img src="https://sc02.alicdn.com/kf/A60dd9f10e46e4e208cc5c4c25c5a8a2fA.png" alt="Cuidado del Cabello">
+                <div class="cat-info">
+                    <h3>Cuidado del Cabello</h3>
                     <p>Champús de salón y tratamientos profesionales.</p>
                 </div>
             </a>
             <a href="fragrance_es.html" class="cat-card">
-                <img src="https://sc02.alicdn.com/kf/A60c1a9d78732436f84e34436e85e6a5bS.png" alt="Fragancias">
+                <img src="https://sc02.alicdn.com/kf/A88b345ed0c8e40dd88a0428f2c762f1eg.png" alt="Fragancias">
                 <div class="cat-info">
                     <h3>Perfume y Aroma</h3>
                     <p>Fragancias finas de lujo y difusores de varillas.</p>
@@ -265,6 +273,19 @@
         </div>
     </section>
 
+    <section id="gallery">
+        <div class="section-header">
+            <span>Exposición</span>
+            <h2>Galería de Fábrica y Productos</h2>
+        </div>
+        <div class="gallery-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 0 20px; margin-bottom: 50px;">
+            <img src="https://sc02.alicdn.com/kf/A224fcd618b314f0dbb212c26f52ccd6cl.png" alt="Centro I+D" style="width:100%; height:300px; object-fit:cover; border-radius:8px;">
+            <img src="https://sc02.alicdn.com/kf/A424fcd618b314f0dbb212c26f52ccd6cl.png" alt="Sala Limpia" style="width:100%; height:300px; object-fit:cover; border-radius:8px;">
+            <img src="https://sc02.alicdn.com/kf/A524fcd618b314f0dbb212c26f52ccd6cl.png" alt="Exhibición de Productos" style="width:100%; height:300px; object-fit:cover; border-radius:8px;">
+            <img src="https://sc01.alicdn.com/kf/A017637841e42443ba98e6a5f5f5f5f5fT.jpg" alt="Línea de Producción" style="width:100%; height:300px; object-fit:cover; border-radius:8px;">
+        </div>
+    </section>
+
     <!-- Sección de Consulta -->
     <section id="inquiry-form">
         <div class="section-header">
@@ -290,6 +311,7 @@
                         <label>Interés de Producto</label>
                         <select name="product">
                             <option value="skincare">Cuidado de la Piel OEM</option>
+                            <option value="bodycare">Cuidado Corporal OEM</option>
                             <option value="haircare">Cuidado del Cabello OEM</option>
                             <option value="fragrance">Fragancias ODM</option>
                             <option value="other">Otra Consulta</option>
@@ -326,6 +348,18 @@
                 <a href="fragrance_es.html">Fragancia</a>
             </div>
             <p class="copyright">&copy; 2026 Guangzhou Huabaotang Biotechnology Service Co., Ltd. <br> Sitio Oficial: www.gjoem.com</p>
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navList = document.getElementById('nav-list');
+        mobileMenu.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>m</p>
         </div>
     </footer>
 
