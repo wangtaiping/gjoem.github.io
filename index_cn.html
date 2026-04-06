@@ -46,7 +46,7 @@
         }
         nav .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; }
         nav .menu-toggle { display: none; font-size: 1.8rem; cursor: pointer; }
-        nav ul { list-style: none; display: flex; gap: 20px; }
+        nav ul { list-style: none; display: flex; gap: 20px; align-items: center; }
         nav ul li a { text-decoration: none; color: var(--primary); font-size: 0.85rem; font-weight: 600; transition: 0.3s; }
         nav ul li a:hover { color: var(--accent); }
 
@@ -60,43 +60,42 @@
         header .content span { color: var(--accent); text-transform: uppercase; letter-spacing: 3px; font-size: 0.9rem; margin-bottom: 10px; display: block; }
         header .content h1 { font-size: 3rem; margin-bottom: 20px; letter-spacing: 3px; line-height: 1.2; }
         header .content p { font-size: 1.1rem; max-width: 700px; margin: 0 auto 30px; font-weight: 300; }
-        .btn-main { padding: 12px 35px; background: var(--accent); color: white; text-decoration: none; font-size: 0.9rem; letter-spacing: 2px; transition: 0.3s; display: inline-block; border: none; cursor: pointer; }
-        .btn-main:hover { background: #a6854a; }
 
-        /* Generic Section Styling */
+        .btn-main { 
+            display: inline-block; padding: 15px 40px; background: var(--accent); color: white; 
+            text-decoration: none; text-transform: uppercase; font-size: 0.85rem; font-weight: 600; 
+            letter-spacing: 2px; transition: 0.3s; border: none; cursor: pointer;
+        }
+        .btn-main:hover { background: #ae8b4a; transform: translateY(-2px); }
+
+        /* Sections */
         section { padding: 80px 5%; }
-        .section-header { text-align: center; margin-bottom: 50px; }
-        .section-header span { color: var(--accent); text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; display: block; margin-bottom: 8px; }
-        .section-header h2 { font-size: 2.2rem; position: relative; padding-bottom: 15px; }
-        .section-header h2::after { content: ''; width: 40px; height: 2px; background: var(--accent); position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header span { color: var(--accent); text-transform: uppercase; letter-spacing: 2px; font-size: 0.85rem; font-weight: 600; }
+        .section-header h2 { font-size: 2.2rem; margin-top: 10px; color: var(--primary); }
 
-        /* Grid Layouts - Responsive */
-        .categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .cat-card { position: relative; overflow: hidden; border-radius: 8px; height: 400px; text-decoration: none; display: block; }
-        .cat-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        /* Categories Grid */
+        .categories { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .cat-card { text-decoration: none; color: inherit; position: relative; overflow: hidden; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .cat-card img { width: 100%; height: 350px; object-fit: cover; transition: 0.5s; }
         .cat-card:hover img { transform: scale(1.05); }
-        .cat-info { position: absolute; bottom: 0; left: 0; padding: 25px; background: linear-gradient(transparent, rgba(0,0,0,0.85)); width: 100%; color: white; }
-        .cat-info h3 { font-size: 1.5rem; margin-bottom: 8px; }
-        .cat-info p { font-size: 0.9rem; opacity: 0.9; }
+        .cat-info { padding: 25px; background: var(--white); }
+        .cat-info h3 { font-size: 1.4rem; margin-bottom: 10px; color: var(--accent); }
+        .cat-info p { font-size: 0.9rem; color: var(--text-muted); }
 
-        /* Factory / Lab Flex - Responsive */
-        .flex-row { display: flex; flex-direction: column; gap: 40px; margin-bottom: 60px; }
-        .flex-img img { width: 100%; border-radius: 8px; }
-        .flex-text h3 { font-size: 2rem; margin-bottom: 15px; }
-        .flex-text p { color: var(--text-muted); font-size: 1rem; }
-
-        /* Stats Section */
-        .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; background: var(--light); padding: 50px 5%; text-align: center; }
-        .stat-item h4 { font-size: 2rem; color: var(--accent); margin-bottom: 5px; }
-        .stat-item p { font-size: 0.8rem; color: var(--text-muted); }
+        /* Flex Rows */
+        .flex-row { display: flex; flex-direction: column; gap: 40px; margin-bottom: 80px; }
+        .flex-img img { width: 100%; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .flex-text h3 { font-size: 1.8rem; margin-bottom: 20px; color: var(--accent); }
+        .flex-text p { font-size: 1rem; color: #555; margin-bottom: 20px; }
 
         /* Inquiry Form */
-        #inquiry-form { background: #fafafa; padding: 80px 5%; }
-        .form-container { max-width: 800px; margin: 0 auto; background: #fff; padding: 40px; box-shadow: 0 5px 30px rgba(0,0,0,0.05); }
+        #inquiry { background: #f9f9f9; }
+        .form-container { max-width: 800px; margin: 0 auto; background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
         .form-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
         .form-group { display: flex; flex-direction: column; }
         .form-group label { font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; }
-        .form-group input, .form-group textarea, .form-group select { padding: 12px; border: 1px solid #ddd; font-family: inherit; font-size: 0.95rem; }
+        .form-group input, .form-group textarea, .form-group select { padding: 12px; border: 1px solid #ddd; font-family: inherit; font-size: 0.9rem; }
         
         /* Floating Contact */
         .floating-contact { position: fixed; bottom: 30px; right: 30px; z-index: 999; display: flex; flex-direction: column; gap: 15px; }
@@ -148,6 +147,7 @@
         <div class="menu-toggle" id="mobile-menu">☰</div>
         <ul id="nav-list">
             <li><a href="skincare_cn.html">护肤系列</a></li>
+            <li><a href="bodycare_cn.html">身体护理</a></li>
             <li><a href="haircare_cn.html">洗护系列</a></li>
             <li><a href="fragrance_cn.html">香氛系列</a></li>
             <li><a href="#factory">工厂实力</a></li>
@@ -157,6 +157,7 @@
             <a href="index.html">EN</a>
             <a href="index_cn.html" class="active">中文</a>
             <a href="index_es.html">ES</a>
+            <a href="#" class="btn-download">下载画册</a>
         </div>
     </nav>
 
@@ -168,6 +169,27 @@
             <a href="#inquiry-form" class="btn-main">获取定制报价</a>
         </div>
     </header>
+
+    <section class="stats-section">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>20+</h3>
+                <p>行业深耕经验</p>
+            </div>
+            <div class="stat-item">
+                <h3>50+</h3>
+                <p>服务全球品牌</p>
+            </div>
+            <div class="stat-item">
+                <h3>1万+</h3>
+                <p>成熟配方储备</p>
+            </div>
+            <div class="stat-item">
+                <h3>30+</h3>
+                <p>产品出口国家</p>
+            </div>
+        </div>
+    </section>
 
     <section id="categories">
         <div class="section-header">
@@ -206,65 +228,60 @@
         </div>
     </section>
 
-    <div class="stats-grid">
-        <div class="stat-item"><h4>GMPC</h4><p>全球标准工厂</p></div>
-        <div class="stat-item"><h4>5000+</h4><p>成熟配方</p></div>
-        <div class="stat-item"><h4>10万级</h4><p>无尘车间</p></div>
-        <div class="stat-item"><h4>20+</h4><p>年行业经验</p></div>
-    </div>
-
-    <!-- 信任背书 -->
-    <section id="certifications" style="background: #fff; padding: 80px 5%; text-align: center; border-top: 1px solid #eee;">
+    <section id="process" style="padding: 60px 5%; background: #fdfdfd;">
         <div class="section-header">
-            <span>国际级制造标准</span>
-            <h2>全球资质认证</h2>
+            <span>合作流程</span>
+            <h2>四步开启品牌之旅</h2>
         </div>
-        <p style="color: var(--text-muted); max-width: 800px; margin: -30px auto 50px; font-size: 1rem;">
-            广州华宝堂生产基地严格遵循国际标准，已通过 **必维认证 (Bureau Veritas, BV)** 审核，满足全球最高化妆品制造品质。
-        </p>
-        <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
-            <div style="flex: 1; min-width: 250px; max-width: 350px; border: 1px solid #eee; padding: 20px; border-radius: 8px; transition: 0.3s;" onmouseover="this.style.borderColor='#c5a059'" onmouseout="this.style.borderColor='#eee'">
-                <img src="https://sc01.alicdn.com/kf/A775b11db02754483a81cc787c10a45fba.jpg" alt="化妆品生产许可证" style="width: 100%; height: auto; border-radius: 4px; margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                <h4 style="font-weight: 700; margin-bottom: 5px;">化妆品生产许可证</h4>
-                <p style="font-size: 0.8rem; color: #888;">粤妆20190269 (有效期至2028年)</p>
+        <div class="process-grid">
+            <div class="process-item">
+                <div class="step-num">1</div>
+                <h3>咨询洽谈</h3>
+                <p>深入分析您的品牌愿景与产品具体需求。</p>
             </div>
-            <div style="flex: 1; min-width: 250px; max-width: 350px; border: 1px solid #eee; padding: 20px; border-radius: 8px; transition: 0.3s;" onmouseover="this.style.borderColor='#c5a059'" onmouseout="this.style.borderColor='#eee'">
-                <img src="https://sc01.alicdn.com/kf/A4e5ad6eee7f1487daa2212571c7c42903.jpg" alt="ISO 22716 认证" style="width: 100%; height: auto; border-radius: 4px; margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                <h4 style="font-weight: 700; margin-bottom: 5px;">ISO 22716:2007</h4>
-                <p style="font-size: 0.8rem; color: #888;">国际化妆品良好操作规范 (GMP)</p>
+            <div class="process-item">
+                <div class="step-num">2</div>
+                <h3>研发打样</h3>
+                <p>实验室定制开发配方并由客户确认样品。</p>
             </div>
-            <div style="flex: 1; min-width: 250px; max-width: 350px; border: 1px solid #eee; padding: 20px; border-radius: 8px; transition: 0.3s;" onmouseover="this.style.borderColor='#c5a059'" onmouseout="this.style.borderColor='#eee'">
-                <img src="https://sc01.alicdn.com/kf/Ac7d8f80478724686b5d5c9fd07830eddK.jpg" alt="美国 FDA GMPC 认证" style="width: 100%; height: auto; border-radius: 4px; margin-bottom: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-                <h4 style="font-weight: 700; margin-bottom: 5px;">美国 FDA GMPC</h4>
-                <p style="font-size: 0.8rem; color: #888;">符合欧美出口级制造标准</p>
+            <div class="process-item">
+                <div class="step-num">3</div>
+                <h3>包装设计</h3>
+                <p>甄选高端包材并进行美学视觉标签设计。</p>
             </div>
-        </div>
-        <div style="margin-top: 40px;">
-            <img src="https://group.bureauveritas.com/sites/g/files/zuefsq436/files/bureau-veritas-logo-300.png" alt="必维认证 Logo" style="height: 50px; opacity: 0.8; filter: grayscale(1);" onerror="this.style.display='none'">
-            <p style="font-size: 0.75rem; color: #999; margin-top: 10px; font-weight: 600; letter-spacing: 1px;">由必维认证 (Bureau Veritas) 提供权威审核与认证</p>
+            <div class="process-item">
+                <div class="step-num">4</div>
+                <h3>规模生产</h3>
+                <p>在严格的 GMPC/ISO 标准下进行大货生产。</p>
+            </div>
         </div>
     </section>
 
     <section id="factory">
         <div class="flex-row">
             <div class="flex-img">
-                <img src="https://sc01.alicdn.com/kf/A774ba750f20044f39e2855c10c4655a7P.jpg" alt="先进生产线">
+                <img src="https://sc01.alicdn.com/kf/Ab4eb3e8b9c6945379bb8b632f236e484q.jpg" alt="化妆品生产线">
             </div>
             <div class="flex-text">
-                <span>制造实力</span>
-                <h3>先进生产设施</h3>
-                <p>配备 10 万级净化车间及全自动生产线，确保高效生产，并为全球出口提供不妥协的高品质保障。</p>
+                <span>先进设施</span>
+                <h3>GMPC & ISO 认证制造标准</h3>
+                <p>我们位于广州的 20,000 平方米工厂严格遵循国际制造标准运行。我们利用 10 万级净化车间和自动化生产线，确保卓越的产品稳定性和安全性。</p>
+                <p>配备顶尖的研发实验室，我们的化学家不断创新，利用生物活性成分和天然提取物打造高性能配方。</p>
             </div>
         </div>
 
         <div class="flex-row">
             <div class="flex-img">
-                <img src="https://sc01.alicdn.com/kf/A477f63d898b74b78b8b2fe927912cbfam.jpg" alt="研发实验室">
+                <img src="https://sc01.alicdn.com/kf/A774ba750f20044f39e2855c10c4655a7P.jpg" alt="研发实验室">
             </div>
             <div class="flex-text">
-                <span>研发创新</span>
-                <h3>生物技术与科学</h3>
-                <p>我们的实验室专注于复杂配方开发，深耕肌肤修护与生物活性成分。提供完整的 MoCRA 和 CPNP 合规支持。</p>
+                <span>创新驱动</span>
+                <h3>研发与定制配方</h3>
+                <p>我们不只是制造，更是创新。我们的团队通过专利成分组合和引领趋势的质地，协助您打造独特的品牌卖点（USPs）。</p>
+                <div class="trend-card">
+                    <h4>2026 创新焦点</h4>
+                    <p>生物类视黄醇与微胶囊包裹技术，实现临床级护肤功效。</p>
+                </div>
             </div>
         </div>
     </section>
@@ -282,22 +299,34 @@
         </div>
     </section>
 
-    <!-- 询盘区域 -->
-    <section id="inquiry-form">
-        <div class="section-header">
-            <span>开始合作</span>
-            <h2>提交您的需求</h2>
+    <section class="cert-section">
+        <div class="section-header" style="margin-bottom: 30px;">
+            <span>国际认证</span>
+            <h2>全球标准合规</h2>
         </div>
+        <div class="cert-grid">
+            <div class="cert-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/SGS_Logo.svg/1200px-SGS_Logo.svg.png" alt="SGS 认证" style="max-width:100px;"></div>
+            <div class="cert-item"><img src="https://sc01.alicdn.com/kf/HTB1yY3pLVXXXXX7XXXXq6xXFXXXm/Bureau-Veritas-Certification.jpg" alt="BV 认证" style="max-width:100px;"></div>
+            <div class="cert-item"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/ISO_Logo_%282016%29.svg" alt="ISO 22716 认证" style="max-width:100px;"></div>
+            <div class="cert-item"><span style="font-weight: 800; font-size: 1.2rem; color: #555;">GMPC</span></div>
+        </div>
+    </section>
+
+    <section id="inquiry-form">
         <div class="form-container">
+            <div class="section-header">
+                <span>联系我们</span>
+                <h2>请求定制报价</h2>
+            </div>
             <form action="https://formspree.io/f/mqakevve" method="POST">
                 <div class="form-grid">
                     <div class="form-group">
-                        <label>姓名</label>
-                        <input type="text" name="name" required placeholder="您的姓名">
+                        <label>您的姓名</label>
+                        <input type="text" name="name" required placeholder="全名">
                     </div>
                     <div class="form-group">
                         <label>电子邮箱</label>
-                        <input type="email" name="email" required placeholder="your@email.com">
+                        <input type="email" name="email" required placeholder="email@company.com">
                     </div>
                     <div class="form-group">
                         <label>品牌/公司名称</label>
@@ -307,6 +336,7 @@
                         <label>意向产品</label>
                         <select name="product">
                             <option value="skincare">护肤品代工</option>
+                            <option value="bodycare">身体护理代工</option>
                             <option value="haircare">洗护代工</option>
                             <option value="fragrance">香水/香氛代工</option>
                             <option value="other">其他咨询</option>
@@ -347,6 +377,7 @@
         </div>
     </footer>
 
+    <script src="lightbox.js"></script>
     <script>
         const mobileMenu = document.getElementById('mobile-menu');
         const navList = document.getElementById('nav-list');
@@ -354,7 +385,5 @@
             navList.classList.toggle('active');
         });
     </script>
-</body>
-</html>ript>
 </body>
 </html>

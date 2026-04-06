@@ -126,7 +126,105 @@
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.product-card:hover, .frag-item:hover, .service-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+/* New Sections Styling */
+.process-grid, .stats-grid, .cert-grid {
+    display: grid;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.process-item {
+    text-align: center;
+    padding: 30px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+.process-item .step-num {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.stats-section {
+    background: var(--primary);
+    color: white;
+    padding: 60px 5%;
+    text-align: center;
+}
+
+.stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.stat-item h3 {
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin-bottom: 10px;
+}
+
+.cert-section {
+    padding: 40px 5%;
+    background: #fff;
+    text-align: center;
+    border-top: 1px solid #eee;
+}
+
+.cert-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    align-items: center;
+    opacity: 0.7;
+}
+
+.cert-item img {
+    max-width: 100px;
+    filter: grayscale(100%);
+    transition: 0.3s;
+}
+
+.cert-item img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.trend-card {
+    background: #fff;
+    border-left: 4px solid var(--accent);
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+@media (min-width: 768px) {
+    .process-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+.btn-download {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-left: 15px;
+    transition: 0.3s;
+}
+
+.btn-download:hover {
+    background: var(--accent);
+    color: white;
 }
