@@ -116,6 +116,15 @@
         .lang-switch a { text-decoration: none; color: var(--primary); padding: 2px 5px; transition: 0.3s; }
         .lang-switch a.active { color: var(--accent); border-bottom: 1px solid var(--accent); }
 
+        .cert-section { padding: 40px 5%; background: #fff; text-align: center; }
+        .cert-grid { 
+            display: flex; flex-wrap: wrap; justify-content: center; align-items: center; 
+            gap: 40px; margin-top: 30px; 
+        }
+        .cert-item { display: flex; align-items: center; justify-content: center; min-width: 120px; }
+        .cert-item img { max-width: 120px; height: auto; filter: grayscale(100%); opacity: 0.6; transition: 0.3s; }
+        .cert-item img:hover { filter: grayscale(0%); opacity: 1; }
+
         /* Mobile Specific Adjustments */
         @media (min-width: 768px) {
             nav { padding: 15px 8%; }
@@ -309,9 +318,9 @@
             <h2>Certificaciones Internacionales</h2>
         </div>
         <div class="cert-grid">
-            <div class="cert-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/SGS_Logo.svg/1200px-SGS_Logo.svg.png" alt="SGS" style="max-width:100px;"></div>
-            <div class="cert-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Bureau_Veritas_Logo.svg/1200px-Bureau_Veritas_Logo.svg.png" alt="BV" style="max-width:100px;"></div>
-            <div class="cert-item"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/ISO_Logo_%282016%29.svg/1200px-ISO_Logo_%282016%29.svg.png" alt="ISO" style="max-width:100px;"></div>
+            <div class="cert-item"><img src="https://logo.clearbit.com/sgs.com" alt="SGS"></div>
+            <div class="cert-item"><img src="https://logo.clearbit.com/bureauveritas.com" alt="BV"></div>
+            <div class="cert-item"><img src="https://logo.clearbit.com/iso.org" alt="ISO"></div>
             <div class="cert-item"><span style="font-weight: 800; font-size: 1.2rem; color: #555;">GMPC</span></div>
         </div>
     </section>
