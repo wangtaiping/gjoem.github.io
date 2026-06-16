@@ -1,0 +1,16 @@
+{
+  "name": "Huabaotang Cosmetics OEM/ODM",
+  "short_name": "Huabaotang",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#c5a059",
+  "description": "Professional cosmetics manufacturing factory in China. Specialized in Skincare, Body Care, Hair Care, and Fragrance OEM/ODM.",
+  "icons": [
+    {
+      "src": "https://sc01.alicdn.com/kf/Ab4eb3e8b9c6945379bb8b632f236e484q.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    }
+  ]
+}
