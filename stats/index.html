@@ -10,16 +10,32 @@
     <style>
         :root { --accent: #c5a059; --bg: #080808; --card: #0f0f0f; --border: #1a1a1a; --text: #e0e0e0; --muted: #777; --green: #5BA85A; --red: #E5555B; --blue: #75A7C9; }
         * { margin:0; padding:0; box-sizing:border-box; }
-        body { font-family: 'Montserrat', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
-        header { background: #0d0d0d; border-bottom: 1px solid var(--border); padding: 16px 5%; display: flex; justify-content: space-between; align-items: center; }
+        body { font-family: 'Montserrat','Microsoft YaHei',sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+
+        /* Login Gate */
+        #login-gate { position: fixed; top:0; left:0; width:100%; height:100%; background: var(--bg); z-index: 99999; display: flex; align-items: center; justify-content: center; }
+        #login-gate.hidden { display: none; }
+        .login-box { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 50px 40px; width: 380px; max-width: 90%; text-align: center; }
+        .login-box .logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--accent); letter-spacing: 3px; margin-bottom: 8px; }
+        .login-box .sub { color: var(--muted); font-size: 0.75rem; margin-bottom: 30px; }
+        .login-box label { display: block; text-align: left; font-size: 0.7rem; color: var(--muted); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        .login-box input { width: 100%; padding: 12px 16px; background: #050505; border: 1px solid #333; border-radius: 6px; color: #ddd; font-size: 0.9rem; margin-bottom: 16px; outline: none; transition: 0.3s; }
+        .login-box input:focus { border-color: var(--accent); }
+        .login-box button { width: 100%; padding: 13px; background: var(--accent); color: #000; border: none; border-radius: 6px; font-size: 0.85rem; font-weight: 700; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .login-box button:hover { background: #d4b168; }
+        .login-box .err { color: var(--red); font-size: 0.72rem; margin-top: 12px; display: none; }
+
+        /* Dashboard (hidden until authenticated) */
+        #dashboard { display: none; }
+        #dashboard.visible { display: block; }
+        header { background: #0d0d0d; border-bottom: 1px solid var(--border); padding: 16px 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
         header .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--accent); letter-spacing: 2px; text-decoration: none; }
         header span { font-size: 0.7rem; color: var(--muted); }
+        header .logout-btn { font-size: 0.65rem; color: var(--red); cursor: pointer; text-decoration: underline; background: none; border: none; }
         main { padding: 25px 5%; max-width: 1500px; margin: 0 auto; }
         .title { margin-bottom: 20px; }
         .title h1 { font-family: 'Playfair Display', serif; font-size: 1.7rem; color: var(--accent); }
         .title p { color: var(--muted); font-size: 0.78rem; margin-top: 3px; }
-
-        /* KPI 卡片 */
         .kpi-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; margin-bottom: 20px; }
         .kpi { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 18px 20px; }
         .kpi .num { font-size: 2rem; font-weight: 300; font-family: 'Playfair Display', serif; color: var(--accent); line-height: 1.1; }
@@ -27,252 +43,239 @@
         .kpi .chg { font-size: 0.65rem; margin-top: 4px; display: inline-block; padding: 2px 6px; border-radius: 3px; }
         .kpi .up { color: var(--green); background: rgba(91,168,90,0.1); }
         .kpi .down { color: var(--red); background: rgba(229,85,91,0.1); }
-
-        /* 图表 */
-        .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
-        @media (max-width: 800px) { .chart-grid { grid-template-columns: 1fr; } }
-        .chart-box { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 18px; }
-        .chart-box h3 { font-size: 0.75rem; color: var(--muted); letter-spacing: 1px; margin-bottom: 12px; text-transform: uppercase; }
-        .chart-box canvas { width: 100% !important; max-height: 260px; }
-
-        /* 转化漏斗 */
-        .funnel { display: flex; justify-content: space-around; align-items: flex-start; margin: 20px 0; flex-wrap: wrap; gap: 10px; }
-        .funnel-step { text-align: center; padding: 15px 20px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; min-width: 110px; }
-        .funnel-step .fs-num { font-size: 1.6rem; font-family: 'Playfair Display', serif; color: var(--accent); }
-        .funnel-step .fs-lbl { font-size: 0.65rem; color: var(--muted); margin-top: 4px; }
-        .funnel-arrow { color: var(--muted); font-size: 1.2rem; align-self: center; }
-
-        /* 表格 */
-        .table-box { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 18px; margin-bottom: 16px; overflow-x: auto; }
-        .table-box h3 { font-size: 0.75rem; color: var(--muted); letter-spacing: 1px; margin-bottom: 12px; text-transform: uppercase; }
-        table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
-        table th { padding: 10px 12px; text-align: left; color: var(--accent); border-bottom: 1px solid var(--border); font-weight: 600; font-size: 0.7rem; text-transform: uppercase; }
-        table td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,0.03); }
-        table tr:hover td { background: rgba(255,255,255,0.02); }
-        .bar-inner { display: inline-block; height: 6px; border-radius: 3px; background: var(--accent); vertical-align: middle; margin-right: 6px; }
-
-        /* Looker 嵌入 */ 
-        .embed-section { margin-bottom: 20px; }
-        .embed-section h2 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--accent); margin-bottom: 12px; }
-        .embed-wrap { background: var(--card); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
-        .embed-wrap iframe { width:100%; height:700px; border:none; display:block; }
-        .embed-hint { padding: 50px 30px; text-align: center; color: var(--muted); }
-        .embed-hint h3 { color: var(--accent); margin-bottom: 8px; }
-        .embed-hint p { font-size: 0.75rem; max-width: 450px; margin: 0 auto 15px; line-height: 1.6; }
-        .embed-hint input { padding: 9px 14px; background: #050505; border: 1px solid #333; border-radius: 6px; color: #ddd; width: 350px; max-width: 80%; font-size: 0.75rem; text-align: center; }
-        .embed-hint button { padding: 9px 20px; background: var(--accent); color: #000; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.75rem; margin-left: 6px; }
-
-        footer { border-top: 1px solid var(--border); padding: 20px 5%; text-align: center; color: #444; font-size: 0.65rem; }
-        .refresh { cursor: pointer; color: var(--accent); font-size: 0.7rem; text-decoration: underline; }
+        .chart-grid { display: grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-bottom:20px; }
+        @media(max-width:800px){.chart-grid{grid-template-columns:1fr}}
+        .chart-box { background:var(--card);border:1px solid var(--border);border-radius:8px;padding:18px; }
+        .chart-box h3 { font-size:0.75rem;color:var(--muted);letter-spacing:1px;margin-bottom:12px;text-transform:uppercase; }
+        .chart-box canvas { width:100% !important; max-height:260px; }
+        .funnel { display:flex;justify-content:space-around;align-items:flex-start;margin:20px 0;flex-wrap:wrap;gap:10px; }
+        .funnel-step { text-align:center;padding:15px 20px;background:var(--card);border:1px solid var(--border);border-radius:8px;min-width:110px; }
+        .funnel-step .fs-num { font-size:1.6rem;font-family:'Playfair Display',serif;color:var(--accent); }
+        .funnel-step .fs-lbl { font-size:0.65rem;color:var(--muted);margin-top:4px; }
+        .funnel-arrow { color:var(--muted);font-size:1.2rem;align-self:center; }
+        .table-box { background:var(--card);border:1px solid var(--border);border-radius:8px;padding:18px;margin-bottom:16px;overflow-x:auto; }
+        .table-box h3 { font-size:0.75rem;color:var(--muted);letter-spacing:1px;margin-bottom:12px;text-transform:uppercase; }
+        table { width:100%;border-collapse:collapse;font-size:0.78rem; }
+        table th { padding:10px 12px;text-align:left;color:var(--accent);border-bottom:1px solid var(--border);font-weight:600;font-size:0.7rem;text-transform:uppercase; }
+        table td { padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.03); }
+        table tr:hover td { background:rgba(255,255,255,0.02); }
+        .bar-inner { display:inline-block;height:6px;border-radius:3px;background:var(--accent);vertical-align:middle;margin-right:6px; }
+        .embed-section { margin-bottom:20px; }
+        .embed-section h2 { font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--accent);margin-bottom:12px; }
+        .embed-wrap { background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden; }
+        .embed-wrap iframe { width:100%;height:700px;border:none;display:block; }
+        .embed-hint { padding:50px 30px;text-align:center;color:var(--muted); }
+        .embed-hint h3 { color:var(--accent);margin-bottom:8px; }
+        .embed-hint p { font-size:0.75rem;max-width:450px;margin:0 auto 15px;line-height:1.6; }
+        .embed-hint input { padding:9px 14px;background:#050505;border:1px solid #333;border-radius:6px;color:#ddd;width:350px;max-width:80%;font-size:0.75rem;text-align:center; }
+        .embed-hint button { padding:9px 20px;background:var(--accent);color:#000;border:none;border-radius:6px;font-weight:600;cursor:pointer;font-size:0.75rem;margin-left:6px; }
+        footer { border-top:1px solid var(--border);padding:20px 5%;text-align:center;color:#444;font-size:0.65rem; }
+        .refresh { cursor:pointer;color:var(--accent);font-size:0.7rem;text-decoration:underline; }
     </style>
 </head>
 <body>
-    <header>
-        <a href="/" class="logo">GJOEM</a>
-        <span id="clock">数据中心 · 加载中...</span>
-    </header>
 
-    <main>
-        <div class="title">
-            <h1>GJOEM 工厂数据中心</h1>
-            <p>OEM 询盘转化分析 · 客户来源追踪 · 产品热度排行 · 每日实时更新 &nbsp; <span class="refresh" onclick="location.reload()">刷新数据</span></p>
-        </div>
-
-        <!-- KPI 指标 -->
-        <div class="kpi-row">
-            <div class="kpi"><div class="num" id="kpi-visits">0</div><div class="lbl">总访问量（累计）</div></div>
-            <div class="kpi"><div class="num" id="kpi-inquiries">0</div><div class="lbl">总询盘次数</div><div class="chg" id="kpi-inq-rate"></div></div>
-            <div class="kpi"><div class="num" id="kpi-countries">0</div><div class="lbl">覆盖国家数</div></div>
-            <div class="kpi"><div class="num" id="kpi-whatsapp">0</div><div class="lbl">WhatsApp 点击</div></div>
-            <div class="kpi"><div class="num" id="kpi-email">0</div><div class="lbl">邮件点击</div></div>
-            <div class="kpi"><div class="num" id="kpi-form">0</div><div class="lbl">表单提交</div></div>
-            <div class="kpi"><div class="num" id="kpi-avg-time">0s</div><div class="lbl">平均停留时长</div></div>
-        </div>
-
-        <!-- 转化漏斗 -->
-        <div class="chart-box" style="margin-bottom:16px">
-            <h3>客户转化漏斗</h3>
-            <div class="funnel">
-                <div class="funnel-step"><div class="fs-num" id="fu-visit">0</div><div class="fs-lbl">访问网站</div></div>
-                <div class="funnel-arrow">→</div>
-                <div class="funnel-step"><div class="fs-num" id="fu-product">0</div><div class="fs-lbl">浏览产品</div></div>
-                <div class="funnel-arrow">→</div>
-                <div class="funnel-step"><div class="fs-num" id="fu-scroll">0%</div><div class="fs-lbl">深度浏览率</div></div>
-                <div class="funnel-arrow">→</div>
-                <div class="funnel-step"><div class="fs-num" id="fu-inquiry">0</div><div class="fs-lbl">发起询盘</div></div>
-                <div class="funnel-arrow">→</div>
-                <div class="funnel-step"><div class="fs-num" id="fu-rate">0%</div><div class="fs-lbl">询盘转化率</div></div>
+    <!-- 登录门禁 -->
+    <div id="login-gate">
+        <div class="login-box">
+            <div class="logo">GJOEM</div>
+            <div class="sub">工厂数据中心 · 请登录</div>
+            <div>
+                <label>账号</label>
+                <input id="login-user" type="text" placeholder="admin" autocomplete="off">
             </div>
+            <div>
+                <label>密码</label>
+                <input id="login-pass" type="password" placeholder="········" autocomplete="off">
+            </div>
+            <button onclick="doLogin()">登 录</button>
+            <div class="err" id="login-err">账号或密码错误</div>
         </div>
+    </div>
 
-        <!-- 图表行 -->
-        <div class="chart-grid">
-            <div class="chart-box"><h3>📈 近30天访问量趋势</h3><canvas id="chart-trend"></canvas></div>
-            <div class="chart-box"><h3>📊 产品类别浏览排行</h3><canvas id="chart-category"></canvas></div>
-            <div class="chart-box"><h3>📧 近30天询盘趋势</h3><canvas id="chart-inquiry"></canvas></div>
-            <div class="chart-box"><h3>🌍 客户国家分布</h3><canvas id="chart-geo"></canvas></div>
-        </div>
-
-        <!-- 设备和来源 -->
-        <div class="chart-grid">
-            <div class="chart-box"><h3>📱 访问设备</h3><canvas id="chart-device"></canvas></div>
-            <div class="chart-box"><h3>⏱️ 各页面平均停留时长</h3><canvas id="chart-time"></canvas></div>
-        </div>
-
-        <!-- 产品详情表格 -->
-        <div class="table-box">
-            <h3>📋 产品页面数据明细</h3>
-            <table>
-                <thead><tr><th>页面</th><th>浏览量</th><th>占比</th><th>平均停留</th><th>滚动深度</th><th>询盘转化</th></tr></thead>
-                <tbody id="table-body"><tr><td colspan="6" style="text-align:center;color:var(--muted)">暂无数据，开始浏览网站后将自动收集</td></tr></tbody>
-            </table>
-        </div>
-
-        <!-- Looker Studio 嵌入 -->
-        <div class="embed-section" style="margin-top: 30px;">
-            <h2>📊 Google Analytics 4 专业报表</h2>
-            <div class="embed-wrap">
-                <iframe id="looker-frame" src="about:blank" style="display:none;"></iframe>
-                <div class="embed-hint" id="looker-hint">
-                    <h3>接入 Looker Studio 实时报表</h3>
-                    <p>去 <a href="https://lookerstudio.google.com" target="_blank" style="color:var(--accent);">lookerstudio.google.com</a> 创建报表 → 连接 GA4 (G-VD6F9Q3S0L) → 分享 → 嵌入 → 粘贴链接到下方</p>
-                    <input id="looker-url" placeholder="粘贴 Looker Studio 嵌入链接...">
-                    <button onclick="loadLooker()">加载</button>
+    <!-- 数据面板（认证后可见） -->
+    <div id="dashboard">
+        <header>
+            <a href="/" class="logo">GJOEM</a>
+            <span id="clock">数据中心 · 加载中...</span>
+            <button class="logout-btn" onclick="doLogout()">退出登录</button>
+        </header>
+        <main>
+            <div class="title">
+                <h1>GJOEM 工厂数据中心</h1>
+                <p>OEM 询盘转化分析 · 客户来源追踪 · 产品热度排行 · 每日实时更新 &nbsp; <span class="refresh" onclick="location.reload()">刷新数据</span></p>
+            </div>
+            <div class="kpi-row">
+                <div class="kpi"><div class="num" id="kpi-visits">0</div><div class="lbl">总访问量（累计）</div></div>
+                <div class="kpi"><div class="num" id="kpi-inquiries">0</div><div class="lbl">总询盘次数</div><div class="chg" id="kpi-inq-rate"></div></div>
+                <div class="kpi"><div class="num" id="kpi-countries">0</div><div class="lbl">覆盖国家数</div></div>
+                <div class="kpi"><div class="num" id="kpi-whatsapp">0</div><div class="lbl">WhatsApp 点击</div></div>
+                <div class="kpi"><div class="num" id="kpi-email">0</div><div class="lbl">邮件点击</div></div>
+                <div class="kpi"><div class="num" id="kpi-form">0</div><div class="lbl">表单提交</div></div>
+                <div class="kpi"><div class="num" id="kpi-avg-time">0s</div><div class="lbl">平均停留时长</div></div>
+            </div>
+            <div class="chart-box" style="margin-bottom:16px">
+                <h3>客户转化漏斗</h3>
+                <div class="funnel">
+                    <div class="funnel-step"><div class="fs-num" id="fu-visit">0</div><div class="fs-lbl">访问网站</div></div><div class="funnel-arrow">→</div>
+                    <div class="funnel-step"><div class="fs-num" id="fu-product">0</div><div class="fs-lbl">浏览产品</div></div><div class="funnel-arrow">→</div>
+                    <div class="funnel-step"><div class="fs-num" id="fu-scroll">0%</div><div class="fs-lbl">深度浏览率</div></div><div class="funnel-arrow">→</div>
+                    <div class="funnel-step"><div class="fs-num" id="fu-inquiry">0</div><div class="fs-lbl">发起询盘</div></div><div class="funnel-arrow">→</div>
+                    <div class="funnel-step"><div class="fs-num" id="fu-rate">0%</div><div class="fs-lbl">询盘转化率</div></div>
                 </div>
             </div>
-        </div>
-    </main>
-    <footer>GJOEM 数据中心 · 数据来源：本地追踪 + Google Analytics 4 · <span id="footer-time"></span></footer>
+            <div class="chart-grid">
+                <div class="chart-box"><h3>📈 近30天访问量趋势</h3><canvas id="chart-trend"></canvas></div>
+                <div class="chart-box"><h3>📊 产品类别浏览排行</h3><canvas id="chart-category"></canvas></div>
+                <div class="chart-box"><h3>📧 近30天询盘趋势</h3><canvas id="chart-inquiry"></canvas></div>
+                <div class="chart-box"><h3>🌍 客户国家分布</h3><canvas id="chart-geo"></canvas></div>
+            </div>
+            <div class="chart-grid">
+                <div class="chart-box"><h3>📱 访问设备</h3><canvas id="chart-device"></canvas></div>
+                <div class="chart-box"><h3>⏱️ 各页面平均停留时长</h3><canvas id="chart-time"></canvas></div>
+            </div>
+            <div class="table-box">
+                <h3>📋 产品页面数据明细</h3>
+                <table>
+                    <thead><tr><th>页面</th><th>浏览量</th><th>占比</th><th>平均停留</th><th>滚动深度</th><th>询盘转化</th></tr></thead>
+                    <tbody id="table-body"><tr><td colspan="6" style="text-align:center;color:var(--muted)">暂无数据</td></tr></tbody>
+                </table>
+            </div>
+            <div class="embed-section" style="margin-top:30px;">
+                <h2>📊 Google Analytics 4 专业报表</h2>
+                <div class="embed-wrap">
+                    <iframe id="looker-frame" src="about:blank" style="display:none;"></iframe>
+                    <div class="embed-hint" id="looker-hint">
+                        <h3>接入 Looker Studio 实时报表</h3>
+                        <p>去 <a href="https://lookerstudio.google.com" target="_blank" style="color:var(--accent);">lookerstudio.google.com</a> 创建报表 → 连接 GA4 (G-VD6F9Q3S0L) → 分享 → 嵌入 → 粘贴链接</p>
+                        <input id="looker-url" placeholder="粘贴 Looker Studio 嵌入链接..."><button onclick="loadLooker()">加载</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>GJOEM 数据中心 · <span id="footer-time"></span></footer>
+    </div>
 
     <script>
         var KEY = 'gjoem_dc_';
-        var now = new Date();
-        document.getElementById('clock').textContent = '数据中心 · ' + now.toLocaleString('zh-CN', {year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'});
-        document.getElementById('footer-time').textContent = '更新于 ' + now.toLocaleString('zh-CN');
+        var AUTH_KEY = 'gjoem_auth';
 
-        function get(k) { try { return JSON.parse(localStorage.getItem(KEY + k) || '{}'); } catch(e) { return {}; } }
-        function sum(obj) { return Object.values(obj).reduce(function(a,b){return a+b;},0); }
-        function lastDays(d, n) { var r = []; for (var i=n-1;i>=0;i--) { var t=new Date(d); t.setDate(t.getDate()-i); r.push(t.toISOString().split('T')[0]); } return r; }
+        // ===== 登录逻辑 =====
+        (async function(){
+            if (sessionStorage.getItem(AUTH_KEY) === '1') {
+                document.getElementById('login-gate').classList.add('hidden');
+                document.getElementById('dashboard').classList.add('visible');
+                initDashboard();
+                return;
+            }
+            document.getElementById('login-pass').addEventListener('keydown', function(e){ if(e.key==='Enter') doLogin(); });
+        })();
 
-        // === KPI 计算 ===
-        var pv = get('pv'); var conv = get('conv'); var sess = get('session'); var time = get('time');
-        var cat = get('category'); var ppv = get('ppv'); var scr = get('scroll'); var src = get('source');
-
-        var totalPV = sum(pv);
-        var totalSessions = sum(sess);
-        var totalEmail = conv.email ? sum(conv.email) : 0;
-        var totalWA = conv.whatsapp ? sum(conv.whatsapp) : 0;
-        var totalForm = conv.form ? sum(conv.form) : 0;
-        var totalInquiries = totalEmail + totalWA + totalForm;
-
-        var totalTime = 0, totalCount = 0;
-        for (var p in time) { totalTime += time[p].total; totalCount += time[p].count; }
-        var avgTime = totalCount > 0 ? Math.round(totalTime / totalCount) : 0;
-
-        document.getElementById('kpi-visits').textContent = totalPV;
-        document.getElementById('kpi-inquiries').textContent = totalInquiries;
-        document.getElementById('kpi-whatsapp').textContent = totalWA;
-        document.getElementById('kpi-email').textContent = totalEmail;
-        document.getElementById('kpi-form').textContent = totalForm;
-        document.getElementById('kpi-avg-time').textContent = avgTime + 's';
-        var inqRate = totalSessions > 0 ? (totalInquiries / totalSessions * 100).toFixed(1) : '0';
-        document.getElementById('kpi-inq-rate').textContent = '询盘率 ' + inqRate + '%';
-        document.getElementById('kpi-inq-rate').className = 'chg ' + (parseFloat(inqRate) > 2 ? 'up' : 'down');
-
-        // === 转化漏斗 ===
-        var catViews = sum(cat);
-        document.getElementById('fu-visit').textContent = totalSessions;
-        document.getElementById('fu-product').textContent = catViews;
-        var scrollTotal = 0, scrollCount = 0;
-        for (var sp in scr) { scrollTotal += scr[sp].total; scrollCount += scr[sp].count; }
-        var avgScroll = scrollCount > 0 ? Math.round(scrollTotal / scrollCount) : 0;
-        document.getElementById('fu-scroll').textContent = avgScroll + '%';
-        document.getElementById('fu-inquiry').textContent = totalInquiries;
-        document.getElementById('fu-rate').textContent = inqRate + '%';
-
-        // === 图表：近30天趋势 ===
-        var days30 = lastDays(now, 30);
-        var trendData = days30.map(function(d){return pv[d]||0;});
-        var inqData = days30.map(function(d){return (conv.email&&conv.email[d]||0)+(conv.whatsapp&&conv.whatsapp[d]||0)+(conv.form&&conv.form[d]||0);});
-
-        new Chart(document.getElementById('chart-trend').getContext('2d'), {
-            type: 'line', data: { labels: days30.map(function(d){return d.slice(5);}), datasets: [{ label: '访问量', data: trendData, borderColor: '#c5a059', backgroundColor: 'rgba(197,160,89,0.08)', fill: true, tension: 0.4, pointRadius: 2, borderWidth: 2 }] },
-            options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { display: false } }, scales: { x: { ticks: { color: '#555', font: { size: 9 }, maxTicksLimit: 10 }, grid: { color: '#1a1a1a' } }, y: { ticks: { color: '#555', font: { size: 9 } }, grid: { color: '#1a1a1a' }, beginAtZero: true } } }
-        });
-
-        new Chart(document.getElementById('chart-inquiry').getContext('2d'), {
-            type: 'bar', data: { labels: days30.map(function(d){return d.slice(5);}), datasets: [{ label: '询盘', data: inqData, backgroundColor: '#75A7C9', borderRadius: 3, borderWidth: 0 }] },
-            options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { display: false } }, scales: { x: { ticks: { color: '#555', font: { size: 9 }, maxTicksLimit: 10 }, grid: { display: false } }, y: { ticks: { color: '#555', font: { size: 9 } }, grid: { color: '#1a1a1a' }, beginAtZero: true } } }
-        });
-
-        // === 图表：国家分布 ===
-        var geo = get('geo');
-        var geoAll = {};
-        for (var g in geo) { geoAll[g] = geo[g]; }
-        var geoSorted = Object.entries(geoAll).sort(function(a,b){return b[1]-a[1];}).slice(0, 10);
-        var geoLabels = geoSorted.map(function(e){return e[0];});
-        var geoValues = geoSorted.map(function(e){return e[1];});
-        var geoColors10 = ['#c5a059','#75A7C9','#E38769','#9BB379','#E2B158','#AD90B0','#3D6F94','#C56443','#6F8854','#C68E31'];
-        if (geoLabels.length === 0) { geoLabels = ['US','CN','GB','DE','JP']; geoValues = [0,0,0,0,0]; }
-        new Chart(document.getElementById('chart-geo').getContext('2d'), {
-            type: 'bar', indexAxis: 'y',
-            data: { labels: geoLabels, datasets: [{ label: '访客', data: geoValues, backgroundColor: geoColors10.slice(0, geoLabels.length), borderRadius: 3, borderWidth: 0 }] },
-            options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { display: false } }, scales: { x: { ticks: { color: '#555', font: { size: 9 } }, grid: { color: '#1a1a1a' }, beginAtZero: true }, y: { ticks: { color: '#888', font: { size: 10 } }, grid: { display: false } } } }
-        });
-        document.getElementById('kpi-countries').textContent = Object.keys(geoAll).filter(function(k){return geoAll[k]>0;}).length || '—';
-
-        // === 图表：设备 ===
-        var dev = get('device');
-        var devTotal = { mobile: 0, desktop: 0, tablet: 0 };
-        for (var dd in dev) { for (var dt in dev[dd]) { devTotal[dt] = (devTotal[dt]||0) + dev[dd][dt]; } }
-        new Chart(document.getElementById('chart-device').getContext('2d'), {
-            type: 'doughnut',
-            data: { labels: ['手机', '电脑', '平板'], datasets: [{ data: [devTotal.mobile||0, devTotal.desktop||0, devTotal.tablet||0], backgroundColor: ['#c5a059','#75A7C9','#9BB379'], borderWidth: 0 }] },
-            options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { position: 'bottom', labels: { color: '#888', padding: 12, font: { size: 10 } } } } }
-        });
-
-        // === 图表：产品类别 ===
-        var catNames = { skincare: '护肤品', bodycare: '身体护理', haircare: '洗护发', fragrance: '香氛' };
-        var catLabels = [], catValues = [], catColors = ['#c5a059','#E38769','#75A7C9','#9BB379'];
-        var i = 0;
-        for (var cn in catNames) { catLabels.push(catNames[cn]); catValues.push(cat[cn] || 0); }
-        new Chart(document.getElementById('chart-category').getContext('2d'), {
-            type: 'doughnut', data: { labels: catLabels, datasets: [{ data: catValues, backgroundColor: catColors, borderWidth: 0 }] },
-            options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { position: 'bottom', labels: { color: '#888', padding: 15, font: { size: 10 } } } } }
-        });
-
-        // === 图表：各页面停留时长 ===
-        var timePages = { skincare: '护肤', bodycare: '身体护理', haircare: '洗护发', fragrance: '香氛' };
-        var tpLabels = [], tpData = [];
-        for (var tp in timePages) { tpLabels.push(timePages[tp]); var td = time[tp]; tpData.push(td ? Math.round(td.total / td.count) : 0); }
-        new Chart(document.getElementById('chart-time').getContext('2d'), {
-            type: 'bar', data: { labels: tpLabels, datasets: [{ label: '秒', data: tpData, backgroundColor: '#c5a059', borderRadius: 3 }] },
-            options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { display: false } }, scales: { x: { ticks: { color: '#555', font: { size: 10 } }, grid: { display: false } }, y: { ticks: { color: '#555', font: { size: 9 }, callback: function(v){return v+'s';} }, grid: { color: '#1a1a1a' }, beginAtZero: true } } }
-        });
-
-        // === 表格 ===
-        var pageNames = { home: '首页', skincare: '护肤系列', bodycare: '身体护理', haircare: '洗护系列', fragrance: '香氛系列', about: '关于我们', faq: '常见问题' };
-        var maxPV = 0;
-        for (var pn in ppv) { var s = sum(ppv[pn]); if (s > maxPV) maxPV = s; }
-        var tbody = document.getElementById('table-body');
-        tbody.innerHTML = '';
-        var tblData = [];
-        for (var pn2 in ppv) {
-            var pvSum = sum(ppv[pn2]);
-            var t = time[pn2]; var avgT = t ? Math.round(t.total / t.count) : 0;
-            var s = scr[pn2]; var avgS = s ? Math.round(s.total / s.count) : 0;
-            var inqCount = (conv.email && conv.email[pn2] || 0) + (conv.whatsapp && conv.whatsapp[pn2] || 0) + (conv.form && conv.form[pn2] || 0);
-            tblData.push({ name: pageNames[pn2] || pn2, pv: pvSum, pct: maxPV > 0 ? Math.round(pvSum / maxPV * 100) : 0, time: avgT, scroll: avgS, inq: inqCount });
+        async function doLogin(){
+            var u = document.getElementById('login-user').value.trim();
+            var p = document.getElementById('login-pass').value.trim();
+            if (!u || !p) return;
+            var inputHash = await sha256(u + ':' + p);
+            // 默认账号: admin  默认密码: gjoem2026
+            var correctHash = await sha256('admin:gjoem2026');
+            if (inputHash === correctHash) {
+                sessionStorage.setItem(AUTH_KEY, '1');
+                document.getElementById('login-gate').classList.add('hidden');
+                document.getElementById('dashboard').classList.add('visible');
+                initDashboard();
+            } else {
+                var err = document.getElementById('login-err');
+                err.style.display = 'block';
+                setTimeout(function(){ err.style.display = 'none'; }, 2000);
+            }
         }
-        tblData.sort(function(a,b){return b.pv - a.pv;});
-        tblData.forEach(function(r){
-            var barW = maxPV > 0 ? Math.round(r.pv / maxPV * 100) : 0;
-            tbody.innerHTML += '<tr><td><strong>' + r.name + '</strong></td><td>' + r.pv + '</td><td><span class="bar-inner" style="width:'+barW+'px"></span> ' + r.pct + '%</td><td>' + r.time + 's</td><td>' + r.scroll + '%</td><td>' + r.inq + '</td></tr>';
-        });
 
-        // === Looker Studio ===
-        function loadLooker() { var url = document.getElementById('looker-url').value.trim(); if (!url) return; if (!url.startsWith('http')) url = 'https://' + url; document.getElementById('looker-frame').src = url; document.getElementById('looker-frame').style.display = 'block'; document.getElementById('looker-hint').style.display = 'none'; localStorage.setItem('gjoem_looker_url', url); }
-        (function() { var s = localStorage.getItem('gjoem_looker_url'); if (s) { document.getElementById('looker-url').value = s; loadLooker(); } })();
+        function doLogout(){
+            sessionStorage.removeItem(AUTH_KEY);
+            location.reload();
+        }
+
+        async function sha256(str){
+            var buf = new TextEncoder().encode(str);
+            var hash = await crypto.subtle.digest('SHA-256', buf);
+            return Array.from(new Uint8Array(hash)).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+        }
+
+        // ===== 数据面板 =====
+        function initDashboard(){
+            var now = new Date();
+            document.getElementById('clock').textContent = '数据中心 · ' + now.toLocaleString('zh-CN',{year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'});
+            document.getElementById('footer-time').textContent = '更新于 ' + now.toLocaleString('zh-CN');
+
+            function get(k){ try{return JSON.parse(localStorage.getItem(KEY+k)||'{}');}catch(e){return{};} }
+            function sum(o){ return Object.values(o).reduce(function(a,b){return a+b;},0); }
+            function lastDays(d,n){ var r=[]; for(var i=n-1;i>=0;i--){ var t=new Date(d); t.setDate(t.getDate()-i); r.push(t.toISOString().split('T')[0]); } return r; }
+
+            var pv=get('pv'), conv=get('conv'), sess=get('session'), time=get('time');
+            var cat=get('category'), ppv=get('ppv'), scr=get('scroll'), geo=get('geo'), dev=get('device');
+
+            var totalPV=sum(pv), totalSessions=sum(sess);
+            var totalEmail=conv.email?sum(conv.email):0, totalWA=conv.whatsapp?sum(conv.whatsapp):0, totalForm=conv.form?sum(conv.form):0;
+            var totalInquiries=totalEmail+totalWA+totalForm;
+
+            var totalTime=0,totalCount=0; for(var p in time){totalTime+=time[p].total;totalCount+=time[p].count;}
+            var avgTime=totalCount>0?Math.round(totalTime/totalCount):0;
+
+            document.getElementById('kpi-visits').textContent=totalPV;
+            document.getElementById('kpi-inquiries').textContent=totalInquiries;
+            document.getElementById('kpi-whatsapp').textContent=totalWA;
+            document.getElementById('kpi-email').textContent=totalEmail;
+            document.getElementById('kpi-form').textContent=totalForm;
+            document.getElementById('kpi-avg-time').textContent=avgTime+'s';
+            var inqRate=totalSessions>0?(totalInquiries/totalSessions*100).toFixed(1):'0';
+            document.getElementById('kpi-inq-rate').textContent='询盘率 '+inqRate+'%';
+            document.getElementById('kpi-inq-rate').className='chg '+(parseFloat(inqRate)>2?'up':'down');
+
+            var catViews=sum(cat);
+            document.getElementById('fu-visit').textContent=totalSessions;
+            document.getElementById('fu-product').textContent=catViews;
+            var scrollTotal=0,scrollCount=0; for(var sp in scr){scrollTotal+=scr[sp].total;scrollCount+=scr[sp].count;}
+            document.getElementById('fu-scroll').textContent=(scrollCount>0?Math.round(scrollTotal/scrollCount):0)+'%';
+            document.getElementById('fu-inquiry').textContent=totalInquiries;
+            document.getElementById('fu-rate').textContent=inqRate+'%';
+
+            var days30=lastDays(now,30);
+            var trendData=days30.map(function(d){return pv[d]||0;});
+            var inqData=days30.map(function(d){return(conv.email&&conv.email[d]||0)+(conv.whatsapp&&conv.whatsapp[d]||0)+(conv.form&&conv.form[d]||0);});
+            new Chart(document.getElementById('chart-trend').getContext('2d'),{type:'line',data:{labels:days30.map(function(d){return d.slice(5);}),datasets:[{label:'访问量',data:trendData,borderColor:'#c5a059',backgroundColor:'rgba(197,160,89,0.08)',fill:true,tension:0.4,pointRadius:2,borderWidth:2}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#555',font:{size:9},maxTicksLimit:10},grid:{color:'#1a1a1a'}},y:{ticks:{color:'#555',font:{size:9}},grid:{color:'#1a1a1a'},beginAtZero:true}}}});
+            new Chart(document.getElementById('chart-inquiry').getContext('2d'),{type:'bar',data:{labels:days30.map(function(d){return d.slice(5);}),datasets:[{label:'询盘',data:inqData,backgroundColor:'#75A7C9',borderRadius:3}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#555',font:{size:9},maxTicksLimit:10},grid:{display:false}},y:{ticks:{color:'#555',font:{size:9}},grid:{color:'#1a1a1a'},beginAtZero:true}}}});
+
+            var geoAll={}; for(var g in geo)geoAll[g]=geo[g];
+            var geoSorted=Object.entries(geoAll).sort(function(a,b){return b[1]-a[1];}).slice(0,10);
+            var geoLabels=geoSorted.map(function(e){return e[0];}), geoValues=geoSorted.map(function(e){return e[1];});
+            var gc=['#c5a059','#75A7C9','#E38769','#9BB379','#E2B158','#AD90B0','#3D6F94','#C56443','#6F8854','#C68E31'];
+            if(!geoLabels.length){geoLabels=['US','CN','GB','DE','JP'];geoValues=[0,0,0,0,0];}
+            new Chart(document.getElementById('chart-geo').getContext('2d'),{type:'bar',indexAxis:'y',data:{labels:geoLabels,datasets:[{data:geoValues,backgroundColor:gc.slice(0,geoLabels.length),borderRadius:3}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#555',font:{size:9}},grid:{color:'#1a1a1a'},beginAtZero:true},y:{ticks:{color:'#888',font:{size:10}},grid:{display:false}}}}});
+            document.getElementById('kpi-countries').textContent=Object.keys(geoAll).filter(function(k){return geoAll[k]>0;}).length||'—';
+
+            var devTotal={mobile:0,desktop:0,tablet:0}; for(var dd in dev)for(var dt in dev[dd])devTotal[dt]=(devTotal[dt]||0)+dev[dd][dt];
+            new Chart(document.getElementById('chart-device').getContext('2d'),{type:'doughnut',data:{labels:['手机','电脑','平板'],datasets:[{data:[devTotal.mobile||0,devTotal.desktop||0,devTotal.tablet||0],backgroundColor:['#c5a059','#75A7C9','#9BB379']}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{position:'bottom',labels:{color:'#888',padding:12,font:{size:10}}}}}});
+
+            var catLabels=[],catValues=[]; var cn={skincare:'护肤品',bodycare:'身体护理',haircare:'洗护发',fragrance:'香氛'};
+            for(var c in cn){catLabels.push(cn[c]);catValues.push(cat[c]||0);}
+            new Chart(document.getElementById('chart-category').getContext('2d'),{type:'doughnut',data:{labels:catLabels,datasets:[{data:catValues,backgroundColor:['#c5a059','#E38769','#75A7C9','#9BB379']}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{position:'bottom',labels:{color:'#888',padding:15,font:{size:10}}}}}});
+
+            var tp={skincare:'护肤',bodycare:'身体护理',haircare:'洗护发',fragrance:'香氛'}, tl=[],td=[];
+            for(var t in tp){tl.push(tp[t]);var td2=time[t];td.push(td2?Math.round(td2.total/td2.count):0);}
+            new Chart(document.getElementById('chart-time').getContext('2d'),{type:'bar',data:{labels:tl,datasets:[{data:td,backgroundColor:'#c5a059',borderRadius:3}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#555',font:{size:10}},grid:{display:false}},y:{ticks:{color:'#555',font:{size:9},callback:function(v){return v+'s';}},grid:{color:'#1a1a1a'},beginAtZero:true}}}});
+
+            var pn={home:'首页',skincare:'护肤系列',bodycare:'身体护理',haircare:'洗护系列',fragrance:'香氛系列',about:'关于我们',faq:'常见问题'};
+            var maxPV=0; for(var p2 in ppv){var s=sum(ppv[p2]);if(s>maxPV)maxPV=s;}
+            var tbody=document.getElementById('table-body'); tbody.innerHTML='';
+            var tblData=[];
+            for(var p3 in ppv){var pvS=sum(ppv[p3]);var t=time[p3];var at=t?Math.round(t.total/t.count):0;var s=scr[p3];var as=s?Math.round(s.total/s.count):0;var ic=(conv.email&&conv.email[p3]||0)+(conv.whatsapp&&conv.whatsapp[p3]||0)+(conv.form&&conv.form[p3]||0);tblData.push({name:pn[p3]||p3,pv:pvS,pct:maxPV?Math.round(pvS/maxPV*100):0,time:at,scroll:as,inq:ic});}
+            tblData.sort(function(a,b){return b.pv-a.pv;});
+            tblData.forEach(function(r){tbody.innerHTML+='<tr><td><strong>'+r.name+'</strong></td><td>'+r.pv+'</td><td><span class="bar-inner" style="width:'+(maxPV?Math.round(r.pv/maxPV*100):0)+'px"></span> '+r.pct+'%</td><td>'+r.time+'s</td><td>'+r.scroll+'%</td><td>'+r.inq+'</td></tr>';});
+            document.querySelector('.refresh').onclick=function(){location.reload();};
+        }
+
+        function loadLooker(){var url=document.getElementById('looker-url').value.trim();if(!url)return;if(!url.startsWith('http'))url='https://'+url;document.getElementById('looker-frame').src=url;document.getElementById('looker-frame').style.display='block';document.getElementById('looker-hint').style.display='none';localStorage.setItem('gjoem_looker_url',url);}
+        (function(){var s=localStorage.getItem('gjoem_looker_url');if(s){document.getElementById('looker-url').value=s;loadLooker();}})();
     </script>
 </body>
 </html>
