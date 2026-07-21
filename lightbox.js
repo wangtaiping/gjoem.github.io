@@ -15,7 +15,7 @@ else if(lang==='es'){document.getElementById('modal-cta').innerText='Consultar A
 document.getElementById('modal-cta').onclick=function(e){e.preventDefault();contactDlg.style.display='flex';};
 contactDlg.onclick=function(e){if(e.target===contactDlg)contactDlg.style.display='none';};
 function openModal(src,title,desc){modalImg.src=src;modalTitle.innerText=title;modalDesc.innerText=desc;modal.style.display='flex';document.body.style.overflow='hidden';currentScale=1;modalImg.style.transform='scale(1)';}
-document.addEventListener('click',function(e){var t=e.target.closest('.product-card, .frag-item, .service-item, .cat-card, .cert-item');if(t){e.preventDefault();var img=t.querySelector('img'),title=t.querySelector('h3, h4'),desc=t.querySelector('p');if(img){openModal(img.src,(title||{}).innerText||'',(desc||{}).innerText||'');}}});
+document.addEventListener('click',function(e){var t=e.target.closest('.product-card,.frag-item,.service-item,.cat-card,.cert-item,.opp-card');if(t){e.preventDefault();var img=t.querySelector('img'),title=t.querySelector('h3, h4'),desc=t.querySelector('p');if(img){openModal(img.src,(title||{}).innerText||'',(desc||{}).innerText||'');}}});
 document.querySelector('.close-modal').onclick=function(){modal.style.display='none';document.body.style.overflow='auto';};
 window.onclick=function(e){if(e.target===modal){modal.style.display='none';document.body.style.overflow='auto';}};
 document.getElementById('zoom-in').onclick=function(e){e.stopPropagation();currentScale+=0.2;modalImg.style.transform='scale('+currentScale+')';};
