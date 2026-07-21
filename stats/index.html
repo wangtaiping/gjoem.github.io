@@ -82,6 +82,7 @@
         <div class="kpi-row">
             <div class="kpi"><div class="num" id="kpi-visits">0</div><div class="lbl">总访问量（累计）</div></div>
             <div class="kpi"><div class="num" id="kpi-inquiries">0</div><div class="lbl">总询盘次数</div><div class="chg" id="kpi-inq-rate"></div></div>
+            <div class="kpi"><div class="num" id="kpi-countries">0</div><div class="lbl">覆盖国家数</div></div>
             <div class="kpi"><div class="num" id="kpi-whatsapp">0</div><div class="lbl">WhatsApp 点击</div></div>
             <div class="kpi"><div class="num" id="kpi-email">0</div><div class="lbl">邮件点击</div></div>
             <div class="kpi"><div class="num" id="kpi-form">0</div><div class="lbl">表单提交</div></div>
@@ -109,6 +110,12 @@
             <div class="chart-box"><h3>📈 近30天访问量趋势</h3><canvas id="chart-trend"></canvas></div>
             <div class="chart-box"><h3>📊 产品类别浏览排行</h3><canvas id="chart-category"></canvas></div>
             <div class="chart-box"><h3>📧 近30天询盘趋势</h3><canvas id="chart-inquiry"></canvas></div>
+            <div class="chart-box"><h3>🌍 客户国家分布</h3><canvas id="chart-geo"></canvas></div>
+        </div>
+
+        <!-- 设备和来源 -->
+        <div class="chart-grid">
+            <div class="chart-box"><h3>📱 访问设备</h3><canvas id="chart-device"></canvas></div>
             <div class="chart-box"><h3>⏱️ 各页面平均停留时长</h3><canvas id="chart-time"></canvas></div>
         </div>
 
@@ -196,6 +203,32 @@
         new Chart(document.getElementById('chart-inquiry').getContext('2d'), {
             type: 'bar', data: { labels: days30.map(function(d){return d.slice(5);}), datasets: [{ label: '询盘', data: inqData, backgroundColor: '#75A7C9', borderRadius: 3, borderWidth: 0 }] },
             options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { display: false } }, scales: { x: { ticks: { color: '#555', font: { size: 9 }, maxTicksLimit: 10 }, grid: { display: false } }, y: { ticks: { color: '#555', font: { size: 9 } }, grid: { color: '#1a1a1a' }, beginAtZero: true } } }
+        });
+
+        // === 图表：国家分布 ===
+        var geo = get('geo');
+        var geoAll = {};
+        for (var g in geo) { geoAll[g] = geo[g]; }
+        var geoSorted = Object.entries(geoAll).sort(function(a,b){return b[1]-a[1];}).slice(0, 10);
+        var geoLabels = geoSorted.map(function(e){return e[0];});
+        var geoValues = geoSorted.map(function(e){return e[1];});
+        var geoColors10 = ['#c5a059','#75A7C9','#E38769','#9BB379','#E2B158','#AD90B0','#3D6F94','#C56443','#6F8854','#C68E31'];
+        if (geoLabels.length === 0) { geoLabels = ['US','CN','GB','DE','JP']; geoValues = [0,0,0,0,0]; }
+        new Chart(document.getElementById('chart-geo').getContext('2d'), {
+            type: 'bar', indexAxis: 'y',
+            data: { labels: geoLabels, datasets: [{ label: '访客', data: geoValues, backgroundColor: geoColors10.slice(0, geoLabels.length), borderRadius: 3, borderWidth: 0 }] },
+            options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { display: false } }, scales: { x: { ticks: { color: '#555', font: { size: 9 } }, grid: { color: '#1a1a1a' }, beginAtZero: true }, y: { ticks: { color: '#888', font: { size: 10 } }, grid: { display: false } } } }
+        });
+        document.getElementById('kpi-countries').textContent = Object.keys(geoAll).filter(function(k){return geoAll[k]>0;}).length || '—';
+
+        // === 图表：设备 ===
+        var dev = get('device');
+        var devTotal = { mobile: 0, desktop: 0, tablet: 0 };
+        for (var dd in dev) { for (var dt in dev[dd]) { devTotal[dt] = (devTotal[dt]||0) + dev[dd][dt]; } }
+        new Chart(document.getElementById('chart-device').getContext('2d'), {
+            type: 'doughnut',
+            data: { labels: ['手机', '电脑', '平板'], datasets: [{ data: [devTotal.mobile||0, devTotal.desktop||0, devTotal.tablet||0], backgroundColor: ['#c5a059','#75A7C9','#9BB379'], borderWidth: 0 }] },
+            options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { position: 'bottom', labels: { color: '#888', padding: 12, font: { size: 10 } } } } }
         });
 
         // === 图表：产品类别 ===

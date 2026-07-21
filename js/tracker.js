@@ -92,7 +92,34 @@
         localStorage.setItem(KEY + 'category', JSON.stringify(cat));
     }
 
-    // --- 10. Traffic source ---
+    // --- 10. Device detection ---
+    var ua = navigator.userAgent;
+    var device = 'desktop';
+    if (/Mobi|Android|iPhone|iPod|BlackBerry|Opera Mini|IEMobile/i.test(ua)) device = 'mobile';
+    else if (/iPad|Tablet|PlayBook|Silk/i.test(ua) || (navigator.maxTouchPoints > 1 && /Macintosh/.test(ua))) device = 'tablet';
+    var devData = JSON.parse(localStorage.getItem(KEY + 'device') || '{}');
+    devData[today] = devData[today] || {};
+    devData[today][device] = (devData[today][device] || 0) + 1;
+    var devKeys = Object.keys(devData).sort(); if (devKeys.length > 90) { delete devData[devKeys[0]]; }
+    localStorage.setItem(KEY + 'device', JSON.stringify(devData));
+
+    // --- 11. Country detection via IP geolocation ---
+    var geoKey = KEY + 'geo_' + today;
+    if (!localStorage.getItem(geoKey)) {
+        fetch('https://ipapi.co/json/')
+            .then(function(r) { return r.json(); })
+            .then(function(d) {
+                if (d.country_code) {
+                    localStorage.setItem(geoKey, d.country_code);
+                    var geo = JSON.parse(localStorage.getItem(KEY + 'geo') || '{}');
+                    geo[d.country_code] = (geo[d.country_code] || 0) + 1;
+                    localStorage.setItem(KEY + 'geo', JSON.stringify(geo));
+                }
+            })
+            .catch(function() {});
+    }
+
+    // --- 12. Traffic source ---
     var ref = document.referrer;
     if (ref && ref !== '') {
         var src = JSON.parse(localStorage.getItem(KEY + 'source') || '{}');
