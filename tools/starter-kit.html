@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Beauty Brand Starter Kit | Huabaotang</title>
+    <meta name="description" content="Download everything you need to launch your beauty brand — templates, calculators, and workbooks.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --accent: #c5a059; --dark: #0a0a0a; --card: #111; --border: #1a1a1a; --text: #e0e0e0; --muted: #888; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: 'Montserrat', sans-serif; color: var(--text); background: var(--dark); line-height:1.6; min-height: 100vh; display: flex; flex-direction: column; }
+        h1,h2,h3 { font-family: 'Playfair Display', serif; font-weight:400; }
+        
+        nav { position: fixed; top:0; width:100%; padding:18px 5%; display:flex; justify-content:space-between; align-items:center; background: rgba(10,10,10,0.95); backdrop-filter:blur(20px); z-index:9999; border-bottom:1px solid rgba(255,255,255,0.05); }
+        nav .logo { font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--accent); letter-spacing:3px; text-decoration:none; font-weight:700; }
+        nav ul { list-style:none; display:flex; gap:24px; align-items:center; }
+        nav ul li a { text-decoration:none; color:var(--muted); font-size:0.7rem; text-transform:uppercase; font-weight:600; letter-spacing:1px; transition:0.3s; }
+        nav ul li a:hover { color:var(--accent); }
+        .menu-toggle { display:none; font-size:1.8rem; cursor:pointer; color:var(--text); }
+        
+        main { flex: 1; padding: 140px 5% 80px; display: flex; flex-direction: column; align-items: center; }
+        .hero-section { text-align: center; max-width: 800px; margin-bottom: 60px; }
+        .page-title { margin-bottom: 20px; font-size: 3.2rem; color: #fff; line-height: 1.1; }
+        .page-subtitle { color: var(--muted); font-size: 1.1rem; margin-bottom: 40px; }
+        
+        .kit-contents { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; width: 100%; max-width: 1000px; margin-bottom: 60px; }
+        .kit-item { background: rgba(255,255,255,0.02); border: 1px solid var(--border); padding: 25px; border-radius: 8px; text-align: center; transition: 0.3s; }
+        .kit-item:hover { border-color: var(--accent); transform: translateY(-5px); background: rgba(197,160,89,0.05); }
+        .kit-icon { font-size: 2rem; margin-bottom: 15px; display: block; }
+        .kit-label { font-size: 0.9rem; font-weight: 600; color: #fff; }
+        
+        .form-container { max-width: 500px; width: 100%; background: var(--card); border: 2px solid var(--accent); border-radius: 12px; padding: 40px; box-shadow: 0 25px 60px rgba(0,0,0,0.8); position: relative; }
+        .form-container::before { content: "LIMITED TIME OFFER"; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #000; padding: 4px 15px; font-size: 0.65rem; font-weight: 800; border-radius: 20px; letter-spacing: 1px; }
+        
+        .form-group { margin-bottom: 25px; }
+        .form-group label { display: block; margin-bottom: 8px; color: var(--accent); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; }
+        
+        select, input { width: 100%; padding: 15px; background: #050505; border: 1px solid var(--border); border-radius: 6px; color: #fff; font-family: inherit; font-size: 1rem; outline: none; transition: 0.3s; }
+        select:focus, input:focus { border-color: var(--accent); box-shadow: 0 0 15px rgba(197,160,89,0.1); }
+        
+        .btn-submit { width: 100%; padding: 18px; background: var(--accent); color: #000; border: none; border-radius: 6px; font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: 0.3s; margin-top: 10px; }
+        .btn-submit:hover { background: #d4b168; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(197,160,89,0.2); }
+        
+        .success-msg { display: none; text-align: center; animation: fadeIn 0.6s ease; }
+        .success-title { color: var(--accent); font-size: 1.8rem; margin-bottom: 15px; }
+        .success-text { color: #fff; margin-bottom: 25px; line-height: 1.8; }
+        .wa-card { background: rgba(37, 211, 102, 0.1); border: 1px solid #25d366; padding: 20px; border-radius: 8px; color: #fff; text-decoration: none; display: block; transition: 0.3s; }
+        .wa-card:hover { background: rgba(37, 211, 102, 0.2); transform: scale(1.02); }
+        
+        .trust-text { margin-top: 40px; color: #444; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; text-align: center; }
+        
+        .back-link { margin-top: 40px; color: var(--muted); text-decoration: none; font-size: 0.8rem; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .back-link:hover { color: var(--accent); }
+        
+        footer { background:#050505; border-top:1px solid var(--border); padding:60px 5% 40px; margin-top: auto; }
+        .footer-content { max-width: 1100px; margin: 0 auto; text-align: center; }
+        .copyright { color: #333; font-size: 0.7rem; margin-top: 30px; letter-spacing: 1px; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        @media(max-width:768px) {
+            .page-title { font-size: 2.4rem; }
+            .kit-contents { grid-template-columns: 1fr; }
+            nav ul { display:none; flex-direction:column; position:absolute; top:60px; left:0; width:100%; background:var(--dark); padding:20px; border-bottom:1px solid var(--border); }
+            nav ul.active { display:flex; }
+            .menu-toggle { display:block; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="../index.html" class="logo">HUABAOTANG</a>
+    <div class="menu-toggle" id="mobile-menu">&#9776;</div>
+    <ul id="nav-list">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../skincare.html">Skincare</a></li>
+        <li><a href="../haircare.html">Hair Care</a></li>
+        <li><a href="../perfume.html">Perfume</a></li>
+        <li><a href="../cosmetics.html">Makeup</a></li>
+        <li><a href="../about.html">About</a></li>
+    </ul>
+</nav>
+
+<main>
+    <div class="hero-section">
+        <h1 class="page-title">Free Beauty Brand Starter Kit</h1>
+        <p class="page-subtitle">Everything you need to launch your beauty brand — market research templates, cost calculator, supplier checklist, and brand positioning workbook. Free download.</p>
+    </div>
+
+    <div class="kit-contents">
+        <div class="kit-item">
+            <span class="kit-icon">📊</span>
+            <span class="kit-label">Market Research Template</span>
+        </div>
+        <div class="kit-item">
+            <span class="kit-icon">💰</span>
+            <span class="kit-label">Cost & Pricing Calculator</span>
+        </div>
+        <div class="kit-item">
+            <span class="kit-icon">📋</span>
+            <span class="kit-label">Supplier Evaluation Checklist</span>
+        </div>
+        <div class="kit-item">
+            <span class="kit-icon">🎨</span>
+            <span class="kit-label">Brand Positioning Workbook</span>
+        </div>
+        <div class="kit-item">
+            <span class="kit-icon">📦</span>
+            <span class="kit-label">Packaging Spec Template</span>
+        </div>
+    </div>
+
+    <div class="form-container" id="form-container">
+        <form id="lead-form">
+            <div class="form-group">
+                <label>Email Address *</label>
+                <input type="email" id="email" placeholder="Enter your business email" required>
+            </div>
+            <div class="form-group">
+                <label>WhatsApp Number (Optional)</label>
+                <input type="tel" id="whatsapp" placeholder="+1 234 567 890">
+            </div>
+            <div class="form-group">
+                <label>Country</label>
+                <select id="country">
+                    <option value="">Select Country</option>
+                    <option value="US">United States</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="CA">Canada</option>
+                    <option value="AU">Australia</option>
+                    <option value="DE">Germany</option>
+                    <option value="FR">France</option>
+                    <option value="ES">Spain</option>
+                    <option value="IT">Italy</option>
+                    <option value="MX">Mexico</option>
+                    <option value="BR">Brazil</option>
+                    <option value="RU">Russia</option>
+                    <option value="CN">China</option>
+                    <option value="JP">Japan</option>
+                    <option value="KR">South Korea</option>
+                    <option value="IN">India</option>
+                    <option value="UAE">United Arab Emirates</option>
+                    <option value="SA">Saudi Arabia</option>
+                    <option value="NG">Nigeria</option>
+                    <option value="ZA">South Africa</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Target Product Type</label>
+                <select id="product-type">
+                    <option value="skincare">Skincare</option>
+                    <option value="haircare">Hair Care</option>
+                    <option value="perfume">Perfume</option>
+                    <option value="makeup">Makeup</option>
+                    <option value="bodycare">Body Care</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-submit">Download Free Kit</button>
+        </form>
+
+        <div class="success-msg" id="success-msg">
+            <h3 class="success-title">Your Starter Kit is ready!</h3>
+            <p class="success-text">We've also sent it to your email. For faster response, WhatsApp us: +86 156-2222-0825</p>
+            <a href="https://wa.me/8615622220825" class="wa-card" target="_blank">
+                <div style="font-weight: 700; margin-bottom: 5px;">Need expert help?</div>
+                <div style="font-size: 0.85rem; opacity: 0.9;">WhatsApp us for a faster response: <br> <strong>+86 156-2222-0825</strong></div>
+            </a>
+        </div>
+    </div>
+
+    <p class="trust-text">100% free. No credit card. Used by 200+ beauty entrepreneurs.</p>
+    
+    <a href="../index.html" class="back-link">← Back to home</a>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div style="font-family:'Playfair Display',serif; color:var(--accent); font-size:1.3rem; letter-spacing:3px; margin-bottom:15px; font-weight:700;">HUABAOTANG</div>
+        <p style="color:var(--muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:2px;">Premium Cosmetic OEM/ODM Manufacturing Partner</p>
+        <p class="copyright">&copy; 2026 Guangzhou Huabaotang Biotechnology Service Co., Ltd. <br> Guangzhou, China</p>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('lead-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const leadData = {
+            email: document.getElementById('email').value,
+            whatsapp: document.getElementById('whatsapp').value,
+            country: document.getElementById('country').value,
+            productType: document.getElementById('product-type').value,
+            timestamp: new Date().toISOString()
+        };
+        
+        // Store lead
+        localStorage.setItem('gjoem_starter_lead', JSON.stringify(leadData));
+        
+        // Show success
+        document.getElementById('lead-form').style.display = 'none';
+        document.getElementById('success-msg').style.display = 'block';
+    });
+
+    // Mobile Menu
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navList = document.getElementById('nav-list');
+    mobileMenu.addEventListener('click', () => {
+        navList.classList.toggle('active');
+    });
+</script>
+<script src="../js/tracker.js"></script>
+</body>
+</html>

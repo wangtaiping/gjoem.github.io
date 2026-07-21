@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casos de Éxito | Historias de Marcas de Belleza - Huabaotang</title>
+    <meta name="description" content="Explore cómo Huabaotang ayuda a los emprendedores de belleza a lanzar y escalar marcas globales. Historias de éxito en cuidado de la piel, perfumes y cuidado del cabello.">
+    <link rel="canonical" href="https://www.gjoem.com/cases_es.html">
+    <link rel="stylesheet" href="lightbox.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --accent: #c5a059; --dark: #0a0a0a; --card: #111; --border: #1a1a1a; --text: #e0e0e0; --muted: #888; --blue: #5B9BD5; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Montserrat',sans-serif; color: var(--text); background: var(--dark); overflow-x: hidden; line-height:1.6; }
+        h1,h2,h3,h4 { font-family: 'Playfair Display',serif; font-weight:400; }
+        section { padding: 100px 5%; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-tag { color: var(--accent); text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; font-weight: 600; display: block; margin-bottom: 12px; }
+        .section-title { font-size: 2.8rem; margin-bottom: 20px; line-height: 1.2; }
+        .section-sub { color: var(--muted); font-size: 1.05rem; max-width: 650px; line-height: 1.7; }
+        
+        nav { position: fixed; top:0; width:100%; padding:18px 5%; display:flex; justify-content:space-between; align-items:center; background: rgba(10,10,10,0.95); backdrop-filter:blur(20px); z-index:9999; border-bottom:1px solid rgba(255,255,255,0.05); }
+        nav .logo { font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--accent); letter-spacing:3px; text-decoration:none; font-weight:700; }
+        nav ul { list-style:none; display:flex; gap:24px; align-items:center; }
+        nav ul li a { text-decoration:none; color:var(--muted); font-size:0.7rem; text-transform:uppercase; font-weight:600; letter-spacing:1px; transition:0.3s; }
+        nav ul li a:hover { color:var(--accent); }
+        .lang-switch { font-size:0.7rem; font-weight:600; display:flex; gap:10px; align-items:center; }
+        .lang-switch a { text-decoration:none; color:var(--muted); padding:3px 6px; }
+        .lang-switch a.active { color:var(--accent); border-bottom:1px solid var(--accent); }
+        .menu-toggle { display:none; font-size:1.8rem; cursor:pointer; color:var(--text); }
+        
+        #hero-inner { padding: 180px 5% 100px; background: linear-gradient(to bottom, #111, #0a0a0a); text-align: center; }
+        
+        .case-grid { margin-top: 60px; }
+        .case-card { display: flex; align-items: center; gap: 80px; margin-bottom: 120px; }
+        .case-card:nth-child(even) { flex-direction: row-reverse; }
+        .case-image { flex: 1; position: relative; }
+        .case-image img { width: 100%; border-radius: 12px; border: 1px solid var(--border); }
+        .case-image::after { content: ''; position: absolute; top: 20px; left: 20px; width: 100%; height: 100%; border: 1px solid var(--accent); border-radius: 12px; z-index: -1; opacity: 0.3; }
+        .case-content { flex: 1; }
+        .case-content h3 { font-size: 2rem; color: var(--accent); margin-bottom: 25px; line-height: 1.2; }
+        .case-info-item { margin-bottom: 25px; }
+        .case-info-item h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin-bottom: 8px; font-weight: 700; font-family: 'Montserrat', sans-serif; }
+        .case-info-item p { font-size: 0.95rem; color: #ccc; }
+        .result-box { background: rgba(197,160,89,0.05); border-left: 3px solid var(--accent); padding: 20px; border-radius: 0 8px 8px 0; }
+        .result-box p { color: var(--accent); font-weight: 600; font-size: 1rem; }
+
+        footer { background:#050505; border-top:1px solid var(--border); padding:80px 5% 40px; }
+        .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:50px; max-width:1100px; margin:0 auto 50px; }
+        .footer-grid h4 { color:var(--accent); margin-bottom:15px; font-size:0.9rem; }
+        .footer-grid a { display:block; color:var(--muted); text-decoration:none; font-size:0.75rem; margin-bottom:8px; transition:0.3s; }
+        .footer-grid a:hover { color:var(--accent); }
+        .copyright { text-align:center; color:#444; font-size:0.7rem; border-top:1px solid var(--border); padding-top:30px; }
+        
+        .btn-cta { display:inline-block; padding:14px 36px; background:var(--accent); color:#000; text-decoration:none; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; border-radius:6px; transition:0.3s; border:none; cursor:pointer; }
+        .btn-cta:hover { background:#d4b168; transform:translateY(-2px); }
+
+        @media(max-width:1024px){ .case-card { gap: 40px; } .footer-grid{grid-template-columns:1fr} }
+        @media(max-width:768px){ 
+            .section-title{font-size:2.2rem} 
+            .case-card { flex-direction: column !important; gap: 30px; margin-bottom: 80px; }
+            nav ul{display:none;flex-direction:column;position:absolute;top:60px;left:0;width:100%;background:var(--dark);padding:20px;border-bottom:1px solid var(--border)} 
+            nav ul.active{display:flex} 
+            .menu-toggle{display:block}
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index_es.html" class="logo">HUABAOTANG</a>
+    <div class="menu-toggle" id="mobile-menu">&#9776;</div>
+    <ul id="nav-list">
+        <li><a href="index_es.html#ailab">AI Lab</a></li>
+        <li><a href="skincare_es.html">Piel</a></li>
+        <li><a href="haircare_es.html">Cabello</a></li>
+        <li><a href="perfume_es.html">Perfume</a></li>
+        <li><a href="cosmetics_es.html">Maquillaje</a></li>
+        <li><a href="bodycare_es.html">Cuerpo</a></li>
+        <li><a href="fragrance_es.html">Hogar</a></li>
+        <li><a href="cases_es.html" style="color:var(--accent)">Casos</a></li>
+        <li><a href="about_es.html">Nosotros</a></li>
+        <li><a href="faq_es.html">FAQ</a></li>
+    </ul>
+    <div class="lang-switch">
+        <a href="cases.html">EN</a>
+        <a href="cases_cn.html">中文</a>
+        <a href="cases_es.html" class="active">ES</a>
+    </div>
+</nav>
+
+<section id="hero-inner">
+    <div class="container">
+        <span class="section-tag">Casos de Éxito</span>
+        <h1 class="section-title">Del Concepto al Mercado Global</h1>
+        <p class="section-sub" style="margin: 0 auto;">No solo fabricamos productos; construimos marcas. Descubra cómo hemos ayudado a emprendedores y empresas establecidas a escalar su visión de belleza en todo el mundo.</p>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="case-grid">
+            <!-- Case 1 -->
+            <div class="case-card">
+                <div class="case-image">
+                    <img src="images/case-skincare.jpg" alt="Caso de Marca de Cosmética Natural" loading="lazy">
+                </div>
+                <div class="case-content">
+                    <h3>De la Cocina a Sephora — Una Marca de Cosmética Natural</h3>
+                    <div class="case-info-item">
+                        <h4>Antecedentes</h4>
+                        <p>Fundadora con sede en EE. UU. con fórmulas caseras buscando un socio de fabricación profesional para escalar a la distribución minorista.</p>
+                    </div>
+                    <div class="case-info-item">
+                        <h4>Desafío</h4>
+                        <p>Requisitos estrictos de certificación de belleza limpia, un cronograma ajustado de 90 días para un lanzamiento de 6 SKU y la necesidad de envases sostenibles y premium.</p>
+                    </div>
+                    <div class="case-info-item">
+                        <h4>Solución</h4>
+                        <p>Desarrollamos 6 fórmulas personalizadas (suero, hidratante, crema para ojos, limpiador, tónico, mascarilla) utilizando ingredientes compatibles con ECOCERT. Implementamos envases airless y cajas de lujo personalizadas. Proporcionamos pruebas de estabilidad completas y apoyo para el registro ante la FDA.</p>
+                    </div>
+                    <div class="result-box">
+                        <h4>Resultado</h4>
+                        <p>Lanzado a tiempo. Destacado con éxito en la sección Sephora Clean Beauty. Generó $200,000 en ingresos en el primer mes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case 2 -->
+            <div class="case-card">
+                <div class="case-image">
+                    <img src="images/case-perfume.jpg" alt="Caso de Marca de Perfumes de Oriente Medio" loading="lazy">
+                </div>
+                <div class="case-content">
+                    <h3>Expansión de una Marca de Perfumes de Oriente Medio</h3>
+                    <div class="case-info-item">
+                        <h4>Antecedentes</h4>
+                        <p>Una casa de perfumes líder con sede en Dubái que busca expandir su presencia en el mercado de lujo europeo.</p>
+                    </div>
+                    <div class="case-info-item">
+                        <h4>Desafío</h4>
+                        <p>Navegar por el cumplimiento de la CPNP de la UE, desarrollar una fórmula de lujo sin alcohol y crear envases de alta gama que atraigan a la estética europea.</p>
+                    </div>
+                    <div class="case-info-item">
+                        <h4>Solución</h4>
+                        <p>Creado fórmulas EDP personalizadas por perfumistas formados en Grasse. Todas las fragancias están libres de ftalatos y cumplen con IFRA. Se suministraron botellas de vidrio italianas con tapones magnéticos. Se gestionó todo el proceso de notificación CPNP de la UE.</p>
+                    </div>
+                    <div class="result-box">
+                        <h4>Resultado</h4>
+                        <p>Ingresó con éxito en 3 mercados europeos importantes. El pedido inicial de 15,000 unidades se agotó rápidamente, estableciéndose pedidos repetidos trimestrales.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case 3 -->
+            <div class="case-card">
+                <div class="case-image">
+                    <img src="images/case-haircare.jpg" alt="Caso de Influencer de Cuidado del Cabello Brasileña" loading="lazy">
+                </div>
+                <div class="case-content">
+                    <h3>De Influencer de Cuidado del Cabello Brasileña a Marca</h3>
+                    <div class="case-info-item">
+                        <h4>Antecedentes</h4>
+                        <p>Una influencer de belleza de Instagram brasileña con 800,000 seguidores que deseaba lanzar una línea de productos de firma.</p>
+                    </div>
+                    <div class="case-info-item">
+                        <h4>Desafío</h4>
+                        <p>Se requirieron MOQs iniciales bajos para probar el mercado, una respuesta extremadamente rápida para capitalizar las tendencias de las redes sociales y envases altamente fotogénicos.</p>
+                    </div>
+                    <div class="case-info-item">
+                        <h4>Solución</h4>
+                        <p>Se desarrolló una línea de champú de queratina, acondicionador y mascarilla capilar con un aroma tropical personalizado (açaí + coco). Se diseñaron botellas degradadas listas para Instagram. Se ofreció un MOQ de 1,000 unidades con entrega en 4 semanas.</p>
+                    </div>
+                    <div class="result-box">
+                        <h4>Resultado</h4>
+                        <p>Se agotó el primer lote en solo 72 horas. Escaló a 10,000 unidades para el primer re-pedido y se expandió a una línea completa de 8 SKU.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case 4 -->
+            <div class="case-card">
+                <div class="case-image">
+                    <img src="images/case-spa.jpg" alt="Caso de Cadena de Spas Europea" loading="lazy">
+                </div>
+                <div class="case-content">
+                    <h3>Marca Blanca para Cadena de Spas Europea</h3>
+                    <div class="case-info-item">
+                        <h4>Antecedentes</h4>
+                        <p>Una cadena de spas de lujo con 15 ubicaciones en toda Europa que deseaba lanzar una línea de cuidado corporal de grado profesional de firma.</p>
+                    </div>
+                    <div class="case-info-item">
+                        <h4>Desafío</h4>
+                        <p>Se necesitaban productos de alto rendimiento, incluyendo un aceite corporal de oro de 24 quilates y exfoliantes de sal mineral que cumplan con los estándares de aromaterapia.</p>
+                    </div>
+                    <div class="case-info-item">
+                        <h4>Solución</h4>
+                        <p>Formulamos un aceite brillante de oro de 24K personalizado y un exfoliante corporal de sal del Himalaya + aceites esenciales. Producimos envases de tamaño profesional para spa (bombas de 1L) junto con tamaños para venta minorista. Obtuvimos la certificación de aromaterapia.</p>
+                    </div>
+                    <div class="result-box">
+                        <h4>Resultado</h4>
+                        <p>Desplegado con éxito en las 15 ubicaciones. Se convirtió en el artículo minorista más vendido en los spas, resultando en $450,000 en pedidos anuales.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="background:var(--card); text-align: center;">
+    <div class="container">
+        <h2 class="section-title">¿Quiere ser nuestra próxima historia de éxito?</h2>
+        <p class="section-sub" style="margin: 0 auto 40px;">Hablemos de cómo podemos dar vida a su visión de belleza.</p>
+        <a href="index_es.html#contact" class="btn-cta">Inicie Su Proyecto</a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-grid">
+        <div>
+            <h4>HUABAOTANG</h4>
+            <p style="color:var(--muted);font-size:0.78rem;line-height:1.7;">Plataforma de creación de marcas de belleza impulsada por IA. Ayudamos a emprendedores de todo el mundo a convertir sus ideas de belleza en marcas globales.</p>
+            <p style="color:var(--muted);font-size:0.7rem;margin-top:15px;">WeChat: tp58886 · WhatsApp: +86 156-2222-0825</p>
+        </div>
+        <div>
+            <h4>Productos</h4>
+            <a href="skincare_es.html">Piel</a><a href="haircare_es.html">Cabello</a><a href="perfume_es.html">Perfume</a><a href="cosmetics_es.html">Maquillaje</a><a href="bodycare_es.html">Cuerpo</a><a href="fragrance_es.html">Hogar</a>
+        </div>
+        <div>
+            <h4>Empresa</h4>
+            <a href="about_es.html">Nosotros</a><a href="faq_es.html">FAQ</a><a href="stats/">Centro de Datos</a><a href="index_es.html#contact">Contacto</a>
+        </div>
+    </div>
+    <p class="copyright">&copy; 2026 Guangzhou Huabaotang Biotechnology. Socio de Marcas de Belleza Impulsado por IA. gjoem.com</p>
+</footer>
+
+<script>
+    var m=document.getElementById('mobile-menu'),n=document.getElementById('nav-list');
+    m.addEventListener('click',function(){n.classList.toggle('active');});
+</script>
+</body>
+</html>
