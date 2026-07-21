@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmetic Ingredient Finder | Free Beauty Formulation Tool - Huabaotang</title>
+    <meta name="description" content="Find active cosmetic ingredients by skin concern. Search by benefit: anti-aging, brightening, hydration, acne. Free OEM formulation reference tool.">
+    <link rel="canonical" href="https://www.gjoem.com/tools/ingredient-finder.html" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VD6F9Q3S0L"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-VD6F9Q3S0L');</script>
+    <script type="text/javascript">(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","qmk4g8f6yh");</script>
+    <style>
+        :root { --accent: #c5a059; --dark: #0a0a0a; --card: #111; --border: #1a1a1a; --text: #e0e0e0; --muted: #888; --blue: #5B9BD5; --green: #5BA85A; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: 'Montserrat',sans-serif; color: var(--text); background: var(--dark); min-height: 100vh; }
+        header { background: #0d0d0d; border-bottom: 1px solid var(--border); padding: 16px 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+        header .logo { font-family: 'Playfair Display',serif; font-size: 1.2rem; color: var(--accent); letter-spacing: 2px; text-decoration: none; }
+        header a { color: var(--muted); text-decoration: none; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; }
+        main { padding: 40px 5%; max-width: 1000px; margin: 0 auto; }
+        h1 { font-family: 'Playfair Display',serif; font-size: 2rem; color: var(--accent); margin-bottom: 8px; }
+        .subtitle { color: var(--muted); font-size: 0.85rem; margin-bottom: 30px; }
+        .tag-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+        .tag { padding: 10px 20px; background: var(--card); border: 1px solid var(--border); border-radius: 25px; cursor: pointer; font-size: 0.75rem; color: var(--muted); transition: 0.3s; font-family: inherit; }
+        .tag:hover, .tag.active { border-color: var(--accent); color: var(--accent); background: rgba(197,160,89,0.08); }
+        .results { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+        .ingredient-card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; border-left: 3px solid var(--accent); }
+        .ingredient-card h3 { color: var(--accent); font-size: 1.1rem; margin-bottom: 6px; }
+        .ingredient-card .desc { font-size: 0.78rem; color: var(--muted); line-height: 1.5; margin-bottom: 8px; }
+        .ingredient-card .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+        .ingredient-card .tags span { font-size: 0.6rem; padding: 3px 8px; border-radius: 12px; background: rgba(91,155,213,0.1); color: var(--blue); }
+        .search-box { margin-bottom: 25px; }
+        .search-box input { width: 100%; padding: 14px 18px; background: var(--card); border: 1px solid var(--border); border-radius: 8px; color: var(--text); font-size: 0.9rem; font-family: inherit; outline: none; }
+        .search-box input:focus { border-color: var(--accent); }
+        .count { color: var(--muted); font-size: 0.7rem; margin-bottom: 15px; }
+        .cta-bar { margin-top: 40px; padding: 30px; background: var(--card); border: 1px solid var(--accent); border-radius: 10px; text-align: center; }
+        .cta-bar h3 { color: var(--accent); font-size: 1.2rem; margin-bottom: 10px; }
+        .cta-bar a { color: #000; background: var(--accent); padding: 12px 30px; border-radius: 6px; text-decoration: none; font-weight: 700; font-size: 0.8rem; display: inline-block; margin-top: 10px; }
+        footer { text-align: center; padding: 40px; color: #444; font-size: 0.65rem; }
+    </style>
+</head>
+<body>
+<header>
+    <a href="/" class="logo">HUABAOTANG</a>
+    <a href="/">← Back to Home</a>
+</header>
+<main>
+    <h1>Cosmetic Ingredient Finder</h1>
+    <p class="subtitle">Search 30+ active cosmetic ingredients by benefit. Free reference for brand owners and formulators.</p>
+    <div class="search-box"><input type="text" id="search" placeholder="Search ingredients or benefits... (e.g. peptides, brightening, hydration)" oninput="filter()"></div>
+    <div class="tag-grid" id="tagGrid">
+        <button class="tag active" onclick="selectTag('all',this)">All</button>
+        <button class="tag" onclick="selectTag('Anti-Aging',this)">Anti-Aging</button>
+        <button class="tag" onclick="selectTag('Hydration',this)">Hydration</button>
+        <button class="tag" onclick="selectTag('Brightening',this)">Brightening</button>
+        <button class="tag" onclick="selectTag('Acne',this)">Acne Control</button>
+        <button class="tag" onclick="selectTag('Barrier',this)">Barrier Repair</button>
+        <button class="tag" onclick="selectTag('Soothing',this)">Soothing</button>
+        <button class="tag" onclick="selectTag('Exfoliation',this)">Exfoliation</button>
+        <button class="tag" onclick="selectTag('Natural',this)">Natural/Botanical</button>
+    </div>
+    <p class="count" id="count"></p>
+    <div class="results" id="results"></div>
+    <div class="cta-bar"><h3>Want these ingredients in your product?</h3><p style="color:var(--muted);font-size:0.8rem;margin-bottom:8px;">Our R&D team formulates custom products with any combination of active ingredients.</p><a href="/#contact">Get a Custom Formula →</a></div>
+</main>
+<footer>&copy; 2026 Huabaotang. Free OEM Formulation Reference Tool.</footer>
+
+<script>
+var ingredients = [
+    {name:"Niacinamide (Vitamin B3)",desc:"Multi-functional: brightens, reduces pores, strengthens barrier, controls oil. Works at 2-10%. Compatible with most actives. The most versatile ingredient in skincare.",cats:["Brightening","Anti-Aging","Barrier","Acne"]},
+    {name:"Hyaluronic Acid (Multi-MW)",desc:"Multi-molecular weight for deep + surface hydration. Holds 1000x its weight in water. Essential in serums, moisturizers, masks. Best combined with ceramides.",cats:["Hydration","Anti-Aging"]},
+    {name:"Peptide Complex (Matrixyl 3000)",desc:"Palmitoyl Tripeptide-1 + Palmitoyl Tetrapeptide-7. Clinically proven to boost collagen production. Reduces fine lines and wrinkles in 4-8 weeks.",cats:["Anti-Aging"]},
+    {name:"Bakuchiol",desc:"Plant-derived retinol alternative from Babchi plant. Delivers anti-aging and brightening benefits without irritation. Suitable for sensitive skin. Compatible with pregnancy-safe formulations.",cats:["Anti-Aging","Brightening","Natural"]},
+    {name:"Ceramide NP (Ceramide 3)",desc:"Skin-identical lipid that repairs the moisture barrier. Essential for eczema and sensitive skin products. Best combined with cholesterol and fatty acids in 3:1:1 ratio.",cats:["Barrier","Hydration","Soothing"]},
+    {name:"Vitamin C (Ethyl Ascorbic Acid)",desc:"Stable vitamin C derivative. Brightens hyperpigmentation, boosts collagen, provides antioxidant protection. Non-irritating at 5-15%. Better stability than L-Ascorbic Acid.",cats:["Brightening","Anti-Aging"]},
+    {name:"Salicylic Acid (BHA)",desc:"Oil-soluble exfoliant that penetrates pores. Dissolves blackheads and prevents acne. Anti-inflammatory. Works at 0.5-2%. OTC gold standard for acne treatment.",cats:["Acne","Exfoliation"]},
+    {name:"Azelaic Acid",desc:"Multi-benefit: treats acne, fades dark spots, reduces redness from rosacea. Pregnancy-safe. Works at 10-20%. Antibacterial + anti-inflammatory + brightening.",cats:["Acne","Brightening","Soothing"]},
+    {name:"Squalane (Olive-derived)",desc:"Bio-identical moisturizer that mimics skin's natural oils. Non-comedogenic, lightweight, absorbs quickly. Suitable for ALL skin types. Excellent carrier for active ingredients.",cats:["Hydration","Barrier","Natural"]},
+    {name:"Centella Asiatica (Cica)",desc:"K-Beauty hero ingredient. Soothes inflammation, accelerates wound healing, stimulates collagen. Madecassoside is the key active compound. Essential for sensitive skin lines.",cats:["Soothing","Barrier","Natural"]},
+    {name:"Glycolic Acid (AHA)",desc:"Smallest molecular weight AHA for deepest penetration. Exfoliates surface dead cells, boosts cell turnover, improves texture and tone. Best for normal to dry skin at 5-10%.",cats:["Exfoliation","Brightening","Anti-Aging"]},
+    {name:"Retinol (Encapsulated)",desc:"Vitamin A derivative. Gold standard anti-aging. Boosts collagen, accelerates cell turnover, reduces hyperpigmentation. Encapsulated for slow release = less irritation. 0.1-1%.",cats:["Anti-Aging","Brightening"]},
+    {name:"Panthenol (Pro-Vitamin B5)",desc:"Deeply hydrating and soothing. Accelerates skin healing, reduces redness, improves barrier function. Essential in after-sun, post-procedure, and sensitive skin products.",cats:["Hydration","Soothing","Barrier"]},
+    {name:"Tea Tree Oil (Melaleuca)",desc:"Natural antibacterial and anti-inflammatory. Effective against acne-causing bacteria. Use at 5% in spot treatments or cleansers. Must be properly formulated to avoid oxidation.",cats:["Acne","Natural"]},
+    {name:"Zinc PCA",desc:"Sebum-regulating ingredient. Controls oil production, reduces shine, has mild antibacterial properties. Ideal for oily and combination skin formulations. Works synergistically with niacinamide.",cats:["Acne","Barrier"]},
+    {name:"Glabridin (Licorice Root Extract)",desc:"Potent natural brightening agent. Inhibits tyrosinase to prevent melanin production. 75x more effective than kojic acid. Gentle enough for sensitive skin brightening products.",cats:["Brightening","Soothing","Natural"]},
+    {name:"Alpha-Arbutin",desc:"Stable, water-soluble brightening agent. Gradually fades dark spots and evens skin tone. Safe for long-term use. Commonly paired with vitamin C for enhanced brightening effect.",cats:["Brightening"]},
+    {name:"Lactic Acid (AHA)",desc:"Gentle AHA suitable for sensitive skin. Exfoliates + hydrates simultaneously. Derived from milk. Works at 5-10%. Ideal for dry and sensitive skin chemical exfoliation.",cats:["Exfoliation","Hydration"]},
+    {name:"Adenosine",desc:"Yeast-derived anti-aging ingredient. Clinically proven to reduce wrinkle depth. Boosts cellular energy (ATP). Gentle alternative to retinol for sensitive skin formulations.",cats:["Anti-Aging","Soothing"]},
+    {name:"Caffeine",desc:"Vasoconstrictor that reduces puffiness and dark circles. Antioxidant protection against UV damage. Stimulates microcirculation. Essential in eye creams and cellulite treatments.",cats:["Anti-Aging"]},
+    {name:"Allantoin",desc:"Soothing and skin-softening agent. Promotes cell proliferation for wound healing. Found naturally in comfrey root. Essential in post-treatment and sensitive skin formulations.",cats:["Soothing","Barrier"]},
+    {name:"Tranexamic Acid",desc:"Powerful brightening agent. Reduces melanin production by inhibiting the plasmin pathway. Effective on stubborn hyperpigmentation and melasma. 2-3% concentration.",cats:["Brightening"]},
+    {name:"Propolis Extract",desc:"Bee-derived natural ingredient. Antibacterial, anti-inflammatory, wound-healing. Rich in flavonoids. Popular in K-Beauty for acne-prone and sensitive skin products.",cats:["Acne","Soothing","Natural"]},
+    {name:"Copper Peptide (GHK-Cu)",desc:"Advanced anti-aging peptide. Stimulates collagen and elastin production. Promotes wound healing and skin remodeling. Potent at very low concentrations (0.05-1%).",cats:["Anti-Aging","Barrier"]},
+    {name:"Mandelic Acid (AHA)",desc:"Large molecular weight AHA from bitter almonds. Gentle exfoliation suitable for sensitive and darker skin tones. Antibacterial properties. Works at 5-15%.",cats:["Exfoliation","Acne","Brightening"]},
+    {name:"Ginseng Extract",desc:"Traditional Asian medicine ingredient. Anti-aging, energizing, improves microcirculation. Rich in ginsenosides with antioxidant activity. Popular in premium Korean and Chinese skincare.",cats:["Anti-Aging","Natural"]},
+    {name:"Polyglutamic Acid (PGA)",desc:"Super-humectant that holds 4x more water than hyaluronic acid. Forms a breathable moisture film. Derived from fermented soybeans. Key trend ingredient in Japanese beauty.",cats:["Hydration","Anti-Aging"]},
+    {name:"Kojic Acid",desc:"Fungal-derived natural brightening agent. Inhibits tyrosinase. Effective at 1-2%. Often combined with glycolic acid in clinical brightening treatments. Can be sensitizing at higher concentrations.",cats:["Brightening","Natural"]},
+    {name:"Ceramide AP + EOP",desc:"Complete ceramide complex (AP, EOP, NP). Restores multiple ceramide types found in healthy skin barrier. Essential in intensive barrier repair creams and eczema products.",cats:["Barrier","Hydration","Soothing"]},
+    {name:"Ubiquinone (Coenzyme Q10)",desc:"Powerful lipid-soluble antioxidant. Protects mitochondrial function in skin cells. Declines with age — topical application replenishes. Ideal for anti-aging and day creams with SPF.",cats:["Anti-Aging"]}
+];
+var activeTag = 'all';
+function render(ingr){
+    var r = document.getElementById('results');
+    r.innerHTML = ingr.map(function(i){return '<div class="ingredient-card"><h3>'+i.name+'</h3><p class="desc">'+i.desc+'</p><div class="tags">'+i.cats.map(function(c){return '<span>'+c+'</span>';}).join('')+'</div></div>';}).join('');
+    document.getElementById('count').textContent = ingr.length + ' ingredients found';
+}
+function filter(){
+    var q = document.getElementById('search').value.toLowerCase();
+    var filtered = ingredients;
+    if(activeTag !== 'all') filtered = filtered.filter(function(i){return i.cats.includes(activeTag);});
+    if(q) filtered = filtered.filter(function(i){return i.name.toLowerCase().includes(q) || i.desc.toLowerCase().includes(q) || i.cats.some(function(c){return c.toLowerCase().includes(q);});});
+    render(filtered);
+}
+function selectTag(tag,btn){
+    activeTag = tag;
+    document.querySelectorAll('.tag').forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active');
+    filter();
+}
+render(ingredients);
+</script>
+</body>
+</html>
