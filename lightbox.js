@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="modal-info">
                 <h2 id="modal-title"></h2>
                 <p id="modal-desc"></p>
-                <a href="mailto:27005046@qq.com?subject=Inquiry%20-%20GJOEM" class="btn-modal-cta" id="modal-cta">Inquire Now</a>
+                <a href="https://wa.me/8615622220825?text=Hello%20GJOEM%2C%20I%27m%20interested%20in%20your%20products" class="btn-modal-cta" target="_blank" id="modal-cta">WhatsApp Now</a>
             </div>
         </div>
     </div>`;
