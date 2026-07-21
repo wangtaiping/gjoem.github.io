@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmetic Cost Calculator | Huabaotang</title>
+    <meta name="description" content="Estimate your product manufacturing costs in seconds with our interactive calculator.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --accent: #c5a059; --dark: #0a0a0a; --card: #111; --border: #1a1a1a; --text: #e0e0e0; --muted: #888; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family: 'Montserrat', sans-serif; color: var(--text); background: var(--dark); line-height:1.6; min-height: 100vh; display: flex; flex-direction: column; }
+        h1,h2,h3 { font-family: 'Playfair Display', serif; font-weight:400; }
+        
+        nav { position: fixed; top:0; width:100%; padding:18px 5%; display:flex; justify-content:space-between; align-items:center; background: rgba(10,10,10,0.95); backdrop-filter:blur(20px); z-index:9999; border-bottom:1px solid rgba(255,255,255,0.05); }
+        nav .logo { font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--accent); letter-spacing:3px; text-decoration:none; font-weight:700; }
+        nav ul { list-style:none; display:flex; gap:24px; align-items:center; }
+        nav ul li a { text-decoration:none; color:var(--muted); font-size:0.7rem; text-transform:uppercase; font-weight:600; letter-spacing:1px; transition:0.3s; }
+        nav ul li a:hover { color:var(--accent); }
+        .menu-toggle { display:none; font-size:1.8rem; cursor:pointer; color:var(--text); }
+        
+        main { flex: 1; padding: 140px 5% 80px; display: flex; flex-direction: column; align-items: center; }
+        .calculator-container { max-width: 600px; width: 100%; background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.6); position: relative; }
+        .page-title { text-align: center; margin-bottom: 10px; font-size: 2.8rem; color: #fff; }
+        .page-subtitle { text-align: center; color: var(--muted); margin-bottom: 50px; font-size: 1rem; max-width: 500px; }
+        
+        .step { display: none; }
+        .step.active { display: block; animation: fadeIn 0.6s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .form-group { margin-bottom: 30px; }
+        .form-group label { display: block; margin-bottom: 12px; color: var(--accent); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; }
+        
+        select, input[type="number"], input[type="email"], input[type="tel"] { width: 100%; padding: 15px; background: #050505; border: 1px solid var(--border); border-radius: 6px; color: #fff; font-family: inherit; font-size: 1rem; outline: none; transition: 0.3s; }
+        select:focus, input:focus { border-color: var(--accent); box-shadow: 0 0 10px rgba(197,160,89,0.1); }
+        
+        .slider-container { margin: 20px 0; }
+        input[type="range"] { width: 100%; height: 4px; background: #222; border-radius: 2px; appearance: none; outline: none; }
+        input[type="range"]::-webkit-slider-thumb { appearance: none; width: 20px; height: 20px; background: var(--accent); border-radius: 50%; cursor: pointer; border: 4px solid #000; transition: 0.2s; }
+        input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+        
+        .qty-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .qty-display { color: var(--accent); font-weight: 700; font-size: 1.4rem; font-family: 'Playfair Display', serif; }
+        
+        .btn-group { display: flex; gap: 15px; margin-top: 40px; }
+        .btn { flex: 1; padding: 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: 0.3s; border: none; }
+        .btn-next { background: var(--accent); color: #000; }
+        .btn-next:hover { background: #d4b168; transform: translateY(-2px); }
+        .btn-prev { background: transparent; border: 1px solid var(--border); color: var(--muted); }
+        .btn-prev:hover { border-color: var(--accent); color: var(--accent); }
+        
+        .results { text-align: center; padding: 20px 0; }
+        .unit-cost { font-size: 1.8rem; color: #fff; font-family: 'Playfair Display', serif; margin-bottom: 10px; }
+        .unit-cost span { color: var(--accent); font-weight: 700; }
+        .total-project { font-size: 1.2rem; color: var(--muted); }
+        .total-project span { color: #fff; font-weight: 600; }
+        .disclaimer { font-size: 0.75rem; color: #444; margin-top: 25px; line-height: 1.6; font-style: italic; }
+        
+        .lead-form { margin-top: 40px; display: none; border-top: 1px solid var(--border); padding-top: 40px; animation: fadeIn 0.8s ease; }
+        .lead-form h3 { color: var(--accent); margin-bottom: 25px; font-size: 1.4rem; text-align: center; }
+        .success-msg { display: none; color: #c5a059; margin-top: 25px; text-align: center; font-size: 1rem; border: 1px solid rgba(197,160,89,0.3); padding: 20px; border-radius: 8px; background: rgba(197,160,89,0.05); }
+        .wa-link { display: inline-block; margin-top: 15px; background: #25d366; color: #fff; text-decoration: none; font-weight: 700; padding: 12px 25px; border-radius: 30px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .wa-link:hover { background: #128c7e; transform: scale(1.05); }
+        
+        .back-link { margin-top: 40px; color: var(--muted); text-decoration: none; font-size: 0.8rem; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .back-link:hover { color: var(--accent); }
+        
+        footer { background:#050505; border-top:1px solid var(--border); padding:60px 5% 40px; }
+        .footer-content { max-width: 1100px; margin: 0 auto; text-align: center; }
+        .copyright { color: #333; font-size: 0.7rem; margin-top: 30px; letter-spacing: 1px; }
+        
+        @media(max-width:768px) {
+            .page-title { font-size: 2.2rem; }
+            .calculator-container { padding: 30px 20px; }
+            nav ul { display:none; flex-direction:column; position:absolute; top:60px; left:0; width:100%; background:var(--dark); padding:20px; border-bottom:1px solid var(--border); }
+            nav ul.active { display:flex; }
+            .menu-toggle { display:block; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="../index.html" class="logo">HUABAOTANG</a>
+    <div class="menu-toggle" id="mobile-menu">&#9776;</div>
+    <ul id="nav-list">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../skincare.html">Skincare</a></li>
+        <li><a href="../haircare.html">Hair Care</a></li>
+        <li><a href="../perfume.html">Perfume</a></li>
+        <li><a href="../cosmetics.html">Makeup</a></li>
+        <li><a href="../about.html">About</a></li>
+    </ul>
+</nav>
+
+<main>
+    <h1 class="page-title">Cosmetic Cost Calculator</h1>
+    <p class="page-subtitle">Estimate your product manufacturing costs in seconds based on type, quantity, and packaging.</p>
+    
+    <div class="calculator-container">
+        <!-- Step 1: Product Type -->
+        <div class="step active" id="step1">
+            <div class="form-group">
+                <label>Step 1: Select Product Type</label>
+                <select id="productType">
+                    <option value="1.80">Serum</option>
+                    <option value="1.50">Cream</option>
+                    <option value="0.90">Shampoo</option>
+                    <option value="2.20">EDP Perfume</option>
+                    <option value="1.20">Lipstick</option>
+                    <option value="1.10">Body Lotion</option>
+                </select>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-next" onclick="nextStep(2)">Next Step</button>
+            </div>
+        </div>
+        
+        <!-- Step 2: Quantity -->
+        <div class="step" id="step2">
+            <div class="form-group">
+                <label>Step 2: Production Quantity</label>
+                <div class="qty-header">
+                    <span>Units</span>
+                    <div class="qty-display" id="qtyVal">1,000</div>
+                </div>
+                <div class="slider-container">
+                    <input type="range" id="quantity" min="100" max="50000" step="100" value="1000" oninput="updateQty(this.value)">
+                </div>
+                <input type="number" id="qtyInput" value="1000" min="100" max="100000" oninput="updateQty(this.value)">
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-prev" onclick="nextStep(1)">Back</button>
+                <button class="btn btn-next" onclick="nextStep(3)">Next Step</button>
+            </div>
+        </div>
+        
+        <!-- Step 3: Packaging -->
+        <div class="step" id="step3">
+            <div class="form-group">
+                <label>Step 3: Packaging Type</label>
+                <select id="packagingType">
+                    <option value="0">Standard PET</option>
+                    <option value="0.60">Airless Pump</option>
+                    <option value="0.80">Glass Bottle</option>
+                    <option value="1.20">Custom Premium</option>
+                </select>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-prev" onclick="nextStep(2)">Back</button>
+                <button class="btn btn-next" onclick="calculate()">Calculate Cost</button>
+            </div>
+        </div>
+        
+        <!-- Step 4: Results -->
+        <div class="step" id="step4">
+            <div class="results">
+                <div class="unit-cost">Estimated Unit Cost: <span id="resUnit">$0.00</span> USD</div>
+                <div class="total-project">Total Project: <span id="resTotal">$0</span> USD</div>
+                <p class="disclaimer">This is a reference estimate. Final pricing depends on formulation, ingredients, and packaging customization.</p>
+            </div>
+            
+            <div class="lead-form" id="leadForm">
+                <h3>Get Detailed Quote</h3>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" id="leadEmail" placeholder="email@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>WhatsApp Number</label>
+                    <input type="tel" id="leadWhatsApp" placeholder="+1..." required>
+                </div>
+                <button class="btn btn-next" onclick="submitLead()">Get Detailed Quote</button>
+                <div class="success-msg" id="successMsg">
+                    Success! Your request has been sent. Our team will contact you with a formal quote within 24 hours.
+                    <br>
+                    <a href="https://wa.me/8615622220825" class="wa-link" target="_blank">Chat on WhatsApp Now</a>
+                </div>
+            </div>
+            
+            <div class="btn-group" id="resultBtns">
+                <button class="btn btn-prev" onclick="nextStep(3)">Back to Edit</button>
+            </div>
+        </div>
+    </div>
+    
+    <a href="../index.html" class="back-link">← Back to website</a>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div style="font-family:'Playfair Display',serif; color:var(--accent); font-size:1.3rem; letter-spacing:3px; margin-bottom:15px; font-weight:700;">HUABAOTANG</div>
+        <p style="color:var(--muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:2px;">Premium Cosmetic OEM/ODM Manufacturing Partner</p>
+        <p class="copyright">&copy; 2026 Guangzhou Huabaotang Biotechnology Service Co., Ltd. <br> Guangzhou, China</p>
+    </div>
+</footer>
+
+<script>
+    function nextStep(step) {
+        document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+        document.getElementById('step' + step).classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    function updateQty(val) {
+        document.getElementById('quantity').value = val;
+        document.getElementById('qtyInput').value = val;
+        document.getElementById('qtyVal').innerText = Number(val).toLocaleString();
+    }
+    
+    function calculate() {
+        const baseCost = parseFloat(document.getElementById('productType').value);
+        const qty = parseInt(document.getElementById('qtyInput').value) || 100;
+        const pkgAdder = parseFloat(document.getElementById('packagingType').value);
+        
+        let multiplier = 1.0;
+        if (qty > 10000) multiplier = 0.85;
+        else if (qty > 5000) multiplier = 0.90;
+        else if (qty > 1000) multiplier = 0.95;
+        
+        const unitCost = (baseCost * multiplier) + pkgAdder;
+        const totalCost = unitCost * qty;
+        
+        document.getElementById('resUnit').innerText = '$' + unitCost.toFixed(2);
+        document.getElementById('resTotal').innerText = '$' + Math.round(totalCost).toLocaleString();
+        
+        nextStep(4);
+        document.getElementById('leadForm').style.display = 'block';
+    }
+    
+    function submitLead() {
+        const email = document.getElementById('leadEmail').value;
+        const whatsapp = document.getElementById('leadWhatsApp').value;
+        
+        if (!email || !whatsapp) {
+            alert('Please provide your contact information to receive the quote.');
+            return;
+        }
+        
+        const lead = {
+            email: email,
+            whatsapp: whatsapp,
+            timestamp: new Date().toISOString(),
+            product: document.getElementById('productType').options[document.getElementById('productType').selectedIndex].text,
+            quantity: document.getElementById('qtyInput').value,
+            unitCost: document.getElementById('resUnit').innerText,
+            totalProject: document.getElementById('resTotal').innerText
+        };
+        
+        localStorage.setItem('lead', JSON.stringify(lead));
+        
+        document.getElementById('successMsg').style.display = 'block';
+        document.querySelector('.lead-form h3').style.display = 'none';
+        document.querySelectorAll('.lead-form .form-group').forEach(el => el.style.display = 'none');
+        document.querySelector('.lead-form button').style.display = 'none';
+        document.getElementById('resultBtns').style.display = 'none';
+    }
+
+    // Mobile Menu
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navList = document.getElementById('nav-list');
+    mobileMenu.addEventListener('click', () => {
+        navList.classList.toggle('active');
+    });
+</script>
+<script src="../js/tracker.js"></script>
+</body>
+</html>

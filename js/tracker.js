@@ -86,9 +86,10 @@
     });
 
     // --- 9. Product category interest ---
-    if (page === 'skincare' || page === 'bodycare' || page === 'haircare' || page === 'fragrance') {
+    if (page.includes('skincare') || page.includes('bodycare') || page.includes('haircare') || page.includes('fragrance') || page.includes('calculator')) {
         var cat = JSON.parse(localStorage.getItem(KEY + 'category') || '{}');
-        cat[page] = (cat[page] || 0) + 1;
+        var catName = page.split('.')[0].split('/').pop();
+        cat[catName] = (cat[catName] || 0) + 1;
         localStorage.setItem(KEY + 'category', JSON.stringify(cat));
     }
 

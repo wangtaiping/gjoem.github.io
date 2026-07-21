@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>成功案例与客户故事 | 华宝堂全球美妆品牌伙伴</title>
+    <meta name="description" content="了解华宝堂如何助力美妆创业者发布并扩大全球品牌。护肤、香水和洗护成功案例分享。">
+    <link rel="stylesheet" href="lightbox.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --accent: #c5a059; --dark: #0a0a0a; --card: #111; --border: #1a1a1a; --text: #e0e0e0; --muted: #888; --blue: #5B9BD5; }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Montserrat', "PingFang SC", "Microsoft YaHei", sans-serif; color: var(--text); background: var(--dark); overflow-x: hidden; line-height:1.6; }
+        h1,h2,h3,h4 { font-family: 'Playfair Display', "Playfair Display", serif; font-weight:400; }
+        section { padding: 100px 5%; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-tag { color: var(--accent); text-transform: uppercase; letter-spacing: 3px; font-size: 0.75rem; font-weight: 600; display: block; margin-bottom: 12px; }
+        .section-title { font-size: 2.8rem; margin-bottom: 20px; line-height: 1.2; }
+        .section-sub { color: var(--muted); font-size: 1.05rem; max-width: 650px; line-height: 1.7; }
+        
+        nav { position: fixed; top:0; width:100%; padding:18px 5%; display:flex; justify-content:space-between; align-items:center; background: rgba(10,10,10,0.95); backdrop-filter:blur(20px); z-index:9999; border-bottom:1px solid rgba(255,255,255,0.05); }
+        nav .logo { font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--accent); letter-spacing:3px; text-decoration:none; font-weight:700; }
+        nav ul { list-style:none; display:flex; gap:24px; align-items:center; }
+        nav ul li a { text-decoration:none; color:var(--muted); font-size:0.75rem; font-weight:600; letter-spacing:1px; transition:0.3s; }
+        nav ul li a:hover { color:var(--accent); }
+        .lang-switch { font-size:0.7rem; font-weight:600; display:flex; gap:10px; align-items:center; }
+        .lang-switch a { text-decoration:none; color:var(--muted); padding:3px 6px; }
+        .lang-switch a.active { color:var(--accent); border-bottom:1px solid var(--accent); }
+        .menu-toggle { display:none; font-size:1.8rem; cursor:pointer; color:var(--text); }
+        
+        #hero-inner { padding: 180px 5% 100px; background: linear-gradient(to bottom, #111, #0a0a0a); text-align: center; }
+        
+        .case-grid { margin-top: 60px; }
+        .case-card { display: flex; align-items: center; gap: 80px; margin-bottom: 120px; }
+        .case-card:nth-child(even) { flex-direction: row-reverse; }
+        .case-image { flex: 1; position: relative; }
+        .case-image img { width: 100%; border-radius: 12px; border: 1px solid var(--border); }
+        .case-image::after { content: ''; position: absolute; top: 20px; left: 20px; width: 100%; height: 100%; border: 1px solid var(--accent); border-radius: 12px; z-index: -1; opacity: 0.3; }
+        .case-content { flex: 1; }
+        .case-content h3 { font-size: 2rem; color: var(--accent); margin-bottom: 25px; line-height: 1.2; }
+        .case-info-item { margin-bottom: 25px; }
+        .case-info-item h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--muted); margin-bottom: 8px; font-weight: 700; font-family: 'Montserrat', sans-serif; }
+        .case-info-item p { font-size: 0.95rem; color: #ccc; }
+        .result-box { background: rgba(197,160,89,0.05); border-left: 3px solid var(--accent); padding: 20px; border-radius: 0 8px 8px 0; }
+        .result-box h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); margin-bottom: 8px; font-weight: 700; }
+        .result-box p { color: var(--accent); font-weight: 600; font-size: 1rem; }
+
+        footer { background:#050505; border-top:1px solid var(--border); padding:80px 5% 40px; }
+        .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:50px; max-width:1100px; margin:0 auto 50px; }
+        .footer-grid h4 { color:var(--accent); margin-bottom:15px; font-size:0.9rem; }
+        .footer-grid a { display:block; color:var(--muted); text-decoration:none; font-size:0.75rem; margin-bottom:8px; transition:0.3s; }
+        .footer-grid a:hover { color:var(--accent); }
+        .copyright { text-align:center; color:#444; font-size:0.7rem; border-top:1px solid var(--border); padding-top:30px; }
+        
+        .btn-cta { display:inline-block; padding:14px 36px; background:var(--accent); color:#000; text-decoration:none; font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:1px; border-radius:6px; transition:0.3s; border:none; cursor:pointer; }
+        .btn-cta:hover { background:#d4b168; transform:translateY(-2px); }
+
+        @media(max-width:1024px){ .case-card { gap: 40px; } .footer-grid{grid-template-columns:1fr} }
+        @media(max-width:768px){ 
+            .section-title{font-size:2.2rem} 
+            .case-card { flex-direction: column !important; gap: 30px; margin-bottom: 80px; }
+            nav ul{display:none;flex-direction:column;position:absolute;top:60px;left:0;width:100%;background:var(--dark);padding:20px;border-bottom:1px solid var(--border)} 
+            nav ul.active{display:flex} 
+            .menu-toggle{display:block}
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index_cn.html" class="logo">华宝堂</a>
+    <div class="menu-toggle" id="mobile-menu">&#9776;</div>
+    <ul id="nav-list">
+        <li><a href="index_cn.html#ailab">AI实验室</a></li>
+        <li><a href="skincare_cn.html">护肤</a></li>
+        <li><a href="haircare_cn.html">洗护</a></li>
+        <li><a href="perfume_cn.html">香水</a></li>
+        <li><a href="cosmetics_cn.html">彩妆</a></li>
+        <li><a href="bodycare_cn.html">身体</a></li>
+        <li><a href="fragrance_cn.html">香氛</a></li>
+        <li><a href="cases_cn.html" style="color:var(--accent)">案例</a></li>
+        <li><a href="about_cn.html">关于</a></li>
+        <li><a href="faq_cn.html">常见问题</a></li>
+    </ul>
+    <div class="lang-switch">
+        <a href="cases.html">EN</a>
+        <a href="cases_cn.html" class="active">中文</a>
+        <a href="index_es.html">ES</a>
+    </div>
+</nav>
+
+<section id="hero-inner">
+    <div class="container">
+        <span class="section-tag">成功案例</span>
+        <h1 class="section-title">从概念到全球市场</h1>
+        <p class="section-sub" style="margin: 0 auto;">我们不仅仅是生产产品，更是在塑造品牌。了解我们如何助力创业者和成熟企业在全球范围内实现美妆愿景。</p>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="case-grid">
+            <!-- Case 1 -->
+            <div class="case-card">
+                <div class="case-image">
+                    <img src="images/case-skincare.jpg" alt="纯净护肤品牌案例" loading="lazy">
+                </div>
+                <div class="case-content">
+                    <h3>从厨房到丝芙兰 —— 纯净护肤品牌的诞生</h3>
+                    <div class="case-info-item">
+                        <h4>项目背景</h4>
+                        <p>美国创始人，最初采用自制配方，需要专业的生产伙伴协助其进行规模化生产，以进入零售渠道。</p>
+                    </div>
+                    <div class="case-info-item">
+                        <h4>面临挑战</h4>
+                        <p>严苛的“纯净美妆”认证要求，90天内完成6款产品的快速上线，以及对高端、可持续包装的需求。</p>
+                    </div>
+                    <div class="case-info-item">
+                        <h4>解决方案</h4>
+                        <p>开发了6款定制配方（精华、面霜、眼霜、洁面、爽肤水、面膜），全部采用 ECOCERT 兼容成分。采用真空泵瓶包装及定制奢侈礼盒。提供全套稳定性测试及 FDA 注册支持。</p>
+                    </div>
+                    <div class="result-box">
+                        <h4>项目结果</h4>
+                        <p>准时上线。成功入驻丝芙兰“Clean Beauty”板块。首月营收突破 20 万美元。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case 2 -->
+            <div class="case-card">
+                <div class="case-image">
+                    <img src="images/case-perfume.jpg" alt="中东香水品牌案例" loading="lazy">
+                </div>
+                <div class="case-content">
+                    <h3>中东香水品牌进军欧洲市场</h3>
+                    <div class="case-info-item">
+                        <h4>项目背景</h4>
+                        <p>一家领先的迪拜香水公司，寻求将其品牌影响力拓展至欧洲奢侈品市场。</p>
+                    </div>
+                    <div class="case-info-item">
+                        <h4>面临挑战</h4>
+                        <p>需要满足欧盟 CPNP 合规要求，研发无酒精的奢侈品配方，并设计符合欧洲审美的高端包装。</p>
+                    </div>
+                    <div class="case-info-item">
+                        <h4>解决方案</h4>
+                        <p>由格拉斯培训的调香师研发定制 EDP 配方。所有香精均不含邻苯二甲酸盐，符合 IFRA 标准。采用意大利进口玻璃瓶及磁吸瓶盖。全程代办欧盟 CPNP 通知流程。</p>
+                    </div>
+                    <div class="result-box">
+                        <h4>项目结果</h4>
+                        <p>成功进入 3 个主要的欧洲市场。首批 15,000 件产品迅速售罄，并建立了每季度的定期翻单机制。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case 3 -->
+            <div class="case-card">
+                <div class="case-image">
+                    <img src="images/case-haircare.jpg" alt="巴西护发网红案例" loading="lazy">
+                </div>
+                <div class="case-content">
+                    <h3>巴西护发网红转型自有品牌</h3>
+                    <div class="case-info-item">
+                        <h4>项目背景</h4>
+                        <p>一位拥有 80 万粉丝的巴西 Instagram 美妆网红，希望推出个人签名的护发产品线。</p>
+                    </div>
+                    <div class="case-info-item">
+                        <h4>面临挑战</h4>
+                        <p>需要较低的起订量以测试市场，要求极快的交货周期以捕捉社交媒体趋势，且包装需具备极高的出片率。</p>
+                    </div>
+                    <div class="case-info-item">
+                        <h4>解决方案</h4>
+                        <p>研发了角蛋白洗发水、护发素及发膜系列，并搭配定制的热带香型（巴西莓 + 椰子）。设计了非常适合社交媒体分享的渐变色瓶身。提供 1,000 件起订量支持，4 周内完成交付。</p>
+                    </div>
+                    <div class="result-box">
+                        <h4>项目结果</h4>
+                        <p>首批产品在 72 小时内售罄。首笔翻单规模扩大至 10,000 件，并已扩展至包含 8 款单品的全系列产品线。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case 4 -->
+            <div class="case-card">
+                <div class="case-image">
+                    <img src="images/case-spa.jpg" alt="欧洲水疗连锁案例" loading="lazy">
+                </div>
+                <div class="case-content">
+                    <h3>欧洲水疗连锁店私有品牌</h3>
+                    <div class="case-info-item">
+                        <h4>项目背景</h4>
+                        <p>一家在欧洲拥有 15 家分店的奢侈水疗连锁机构，希望推出具有品牌特色的专业级身体护理系列。</p>
+                    </div>
+                    <div class="case-info-item">
+                        <h4>面临挑战</h4>
+                        <p>需要高性能产品，包括一款 24K 金身体油和矿物盐磨砂膏，且需符合芳疗行业标准。</p>
+                    </div>
+                    <div class="case-info-item">
+                        <h4>解决方案</h4>
+                        <p>研制了定制 24K 金珠光身体油及喜马拉雅盐精油磨砂膏。生产了专业级水疗大容量包装（1升泵瓶）以及零售规格。通过了芳疗相关认证。</p>
+                    </div>
+                    <div class="result-box">
+                        <h4>项目结果</h4>
+                        <p>成功在全部 15 家分店投入使用。成为水疗店最畅销的零售单品，年订单金额达 45 万美元。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section style="background:var(--card); text-align: center;">
+    <div class="container">
+        <h2 class="section-title">想成为我们的下一个成功案例吗？</h2>
+        <p class="section-sub" style="margin: 0 auto 40px;">让我们共同探讨如何将您的美妆愿景变为现实。</p>
+        <a href="index_cn.html#contact" class="btn-cta">启动您的项目</a>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-grid">
+        <div>
+            <h4>华宝堂</h4>
+            <p style="color:var(--muted);font-size:0.78rem;line-height:1.7;">AI赋能的美妆品牌创建平台。我们助力全球创业者将美妆创意转化为全球品牌。</p>
+            <p style="color:var(--muted);font-size:0.7rem;margin-top:15px;">微信: tp58886 · WhatsApp: +86 156-2222-0825</p>
+        </div>
+        <div>
+            <h4>产品系列</h4>
+            <a href="skincare_cn.html">护肤系列</a><a href="haircare_cn.html">洗护系列</a><a href="perfume_cn.html">香水系列</a><a href="cosmetics_cn.html">彩妆系列</a><a href="bodycare_cn.html">身体护理</a><a href="fragrance_cn.html">家居香氛</a>
+        </div>
+        <div>
+            <h4>公司信息</h4>
+            <a href="about_cn.html">关于我们</a><a href="faq_cn.html">常见问题</a><a href="stats/">数据中心</a><a href="index_cn.html#contact">联系我们</a>
+        </div>
+    </div>
+    <p class="copyright">&copy; 2026 广州华宝堂生物科技有限公司. AI美妆品牌合作伙伴. gjoem.com</p>
+</footer>
+
+<script>
+    var m=document.getElementById('mobile-menu'),n=document.getElementById('nav-list');
+    m.addEventListener('click',function(){n.classList.toggle('active');});
+</script>
+</body>
+</html>
