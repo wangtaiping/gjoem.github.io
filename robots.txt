@@ -1,8 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /stats/
 
 Sitemap: https://www.gjoem.com/sitemap.xml
 
-# Disallow search queries and assets folders
+# Block search queries and admin paths
 Disallow: /assets/
 Disallow: /*?*
