@@ -406,7 +406,7 @@
                 </div>
             </a>
             <a href="fragrance.html" class="category-card" title="Luxury Fragrance and Aromatherapy Private Label">
-                <img src="https://sc02.alicdn.com/kf/A39121852026742878c772e01df7b0314J.png" alt="Huabaotang Fragrance and Aromatherapy ODM - Perfumes and Diffusers">
+                <img src="https://sc02.alicdn.com/kf/A88b345ed0c8e40dd88a0428f2c762f1eg.png" alt="Huabaotang Fragrance and Aromatherapy ODM - Perfumes and Diffusers">
                 <div>
                     <h3 data-zh="香氛与芳疗">Fragrance & Soul</h3>
                     <p data-zh="高端香水定制、无火香薰和手工蜡烛。">Luxury perfume, reed diffusers, and artisanal candles.</p>
@@ -423,17 +423,17 @@
         <p style="max-width: 800px; margin: 0 auto 40px; color: var(--text-muted);" data-zh="我们严格遵守全球质量标准，确保您的品牌在全球市场无忧准入。">We strictly adhere to global quality standards, ensuring your brand's compliance in USA (MoCRA), EU (CPNP), and Middle Eastern markets.</p>
         <div class="cert-grid">
             <div class="cert-item">
-                <img src="https://sc04.alicdn.com/kf/A7232230303114a40879482d499971268M.jpg" alt="Huabaotang ISO 22716 Good Manufacturing Practices Certificate" class="lightbox-trigger">
+                <img src="https://sc01.alicdn.com/kf/A6a1c479331fd403fa9f647509d4a3069Y.jpg" alt="Huabaotang ISO 22716 Good Manufacturing Practices Certificate" class="lightbox-trigger">
                 <h4 data-zh="ISO 22716">ISO 22716</h4>
                 <p data-zh="化妆品良好生产规范">Good Manufacturing Practices</p>
             </div>
             <div class="cert-item">
-                <img src="https://sc04.alicdn.com/kf/A1721f478335848ba8b42797223063548I.jpg" alt="Huabaotang GMPC Certification for US and EU Markets" class="lightbox-trigger">
+                <img src="https://sc01.alicdn.com/kf/A2636867eff4d459f81bfcd1230a1e67ai.jpg" alt="Huabaotang GMPC Certification for US and EU Markets" class="lightbox-trigger">
                 <h4 data-zh="GMPC (US/EU)">GMPC (US/EU)</h4>
                 <p data-zh="美欧化妆品认证标准">International Quality Standard</p>
             </div>
             <div class="cert-item">
-                <img src="https://sc04.alicdn.com/kf/Af770830403114a40879482d499971268W.jpg" alt="Huabaotang Official Cosmetics Production License China" class="lightbox-trigger">
+                <img src="https://sc01.alicdn.com/kf/A493c43af536a4790b51b8af586ecc62bG.jpg" alt="Huabaotang Official Cosmetics Production License China" class="lightbox-trigger">
                 <h4 data-zh="生产许可证">Production License</h4>
                 <p data-zh="官方化妆品生产资质">Certified Manufacturing Facility</p>
             </div>
@@ -564,15 +564,22 @@
     <script src="lightbox.js"></script>
     <script src="hover-translate.js"></script>
     <script>
+        // Global image fallback for broken CDN links
+        document.querySelectorAll('img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                var fallback = this.parentElement;
+                if (fallback && !fallback.querySelector('.img-fallback')) {
+                    var span = document.createElement('span');
+                    span.className = 'img-fallback';
+                    span.textContent = 'Image';
+                    span.style.cssText = 'display:flex;align-items:center;justify-content:center;height:300px;background:#f0f0f0;color:#999;border-radius:8px;font-size:0.85rem';
+                    this.insertAdjacentElement('afterend', span);
+                }
+            }, { once: true });
+        });
         const mobileMenu = document.getElementById('mobile-menu');
         const navList = document.getElementById('nav-list');
-        mobileMenu.addEventListener('click', () => {
-            navList.classList.toggle('active');
-        });
-    </script>
-</body>
-</html>
-cument.getElementById('nav-list');
         mobileMenu.addEventListener('click', () => {
             navList.classList.toggle('active');
         });
