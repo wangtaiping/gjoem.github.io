@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
         modalImg.style.transform = 'scale(' + currentScale + ')';
     }
 
-    var selectors = '.product-card, .frag-item, .service-item, .cat-card';
+    var selectors = '.product-card, .frag-item, .service-item, .cat-card, .cert-item';
     document.addEventListener('click', function(e) {
         var target = e.target.closest(selectors);
         if (target) {
