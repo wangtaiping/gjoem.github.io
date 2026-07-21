@@ -247,9 +247,10 @@
 
             var geoAll={}; for(var g in geo)geoAll[g]=geo[g];
             var geoSorted=Object.entries(geoAll).sort(function(a,b){return b[1]-a[1];}).slice(0,10);
-            var geoLabels=geoSorted.map(function(e){return e[0];}), geoValues=geoSorted.map(function(e){return e[1];});
+            var cnCountry={US:'美国',CN:'中国',GB:'英国',JP:'日本',KR:'韩国',AU:'澳大利亚',DE:'德国',FR:'法国',BR:'巴西',AE:'阿联酋',CA:'加拿大',IN:'印度',SG:'新加坡',TH:'泰国',VN:'越南',MY:'马来西亚',ID:'印度尼西亚',PH:'菲律宾',IT:'意大利',ES:'西班牙',NL:'荷兰',RU:'俄罗斯',MX:'墨西哥',SA:'沙特阿拉伯',TR:'土耳其',ZA:'南非',EG:'埃及',NG:'尼日利亚',KE:'肯尼亚',PK:'巴基斯坦',BD:'孟加拉国',HK:'香港',TW:'台湾'};
+            var geoLabels=geoSorted.map(function(e){return cnCountry[e[0]]||e[0];}), geoValues=geoSorted.map(function(e){return e[1];});
             var gc=['#c5a059','#75A7C9','#E38769','#9BB379','#E2B158','#AD90B0','#3D6F94','#C56443','#6F8854','#C68E31'];
-            if(!geoLabels.length){geoLabels=['US','CN','GB','DE','JP'];geoValues=[0,0,0,0,0];}
+            if(!geoLabels.length){geoLabels=['美国','中国','英国','德国','日本'];geoValues=[0,0,0,0,0];}
             new Chart(document.getElementById('chart-geo').getContext('2d'),{type:'bar',indexAxis:'y',data:{labels:geoLabels,datasets:[{data:geoValues,backgroundColor:gc.slice(0,geoLabels.length),borderRadius:3}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#555',font:{size:9}},grid:{color:'#1a1a1a'},beginAtZero:true},y:{ticks:{color:'#888',font:{size:10}},grid:{display:false}}}}});
             document.getElementById('kpi-countries').textContent=Object.keys(geoAll).filter(function(k){return geoAll[k]>0;}).length||'—';
 
