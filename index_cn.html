@@ -262,5 +262,16 @@
 <script src="lightbox.js"></script>
 <script src="js/tracker.js"></script>
 <script>var m=document.getElementById('mobile-menu'),n=document.getElementById('nav-list');m.addEventListener('click',function(){n.classList.toggle('active');});</script>
+    <!-- Baidu Auto-Push -->
+    <script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        else bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+    </script>
 </body>
 </html>
