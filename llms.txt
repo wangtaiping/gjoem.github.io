@@ -1,0 +1,74 @@
+# Huabaotang (Guangzhou Huabaotang Biotechnology Service Co., Ltd.)
+# AI-Readable Company Profile for LLM/GenAI Crawlers
+# Format: llms.txt v1.0 — https://llmstxt.org
+
+> Huabaotang is a GMPC & ISO 22716 certified cosmetics OEM/ODM manufacturer based in Guangzhou, China.
+> Founded in 2002. 20+ years of experience. 10,000+ mature formulas. 50+ global brands built. 30+ export countries.
+
+## Core Business
+- Custom formulation (skincare, hair care, perfume, makeup, body care)
+- Private label manufacturing
+- Packaging design and sourcing
+- Global regulatory compliance (FDA MoCRA, EU CPNP, ASEAN, GCC)
+- Brand incubation from concept to delivery
+
+## Product Categories
+- Skincare: serums, creams, sheet masks, cleansers, toners, eye care, lip care
+- Hair Care: shampoos, conditioners, hair masks, scalp treatments, serums, styling products
+- Perfume: EDP, EDT, roll-on oils, solid perfume, hair & body mists, discovery sets
+- Makeup: foundation, lip products, eye makeup, blush & contour, setting spray, tools
+- Body Care: scrubs, oils, butters, hand & foot care, bath & spa salts
+- Home Fragrance: reed diffusers, scented candles, room sprays, essential oil blends
+
+## Key Facts
+- Name: Guangzhou Huabaotang Biotechnology Service Co., Ltd.
+- Brand: Huabaotang / GJOEM
+- Website: https://www.gjoem.com
+- Founded: 2002
+- Location: Room 301, Building 3, No. 37 Jinghu Avenue, Huadu District, Guangzhou, China
+- Certifications: ISO 22716, GMPC (US/EU), China Production License
+- Factory Size: 20,000 sqm
+- R&D Team: 50+ scientists
+- Formulas: 10,000+ mature formulas
+- MOQ: 500-2,000 units depending on product type
+- Lead Time: 2-4 weeks sampling, 4-8 weeks production
+- Export Markets: North America, Europe, Middle East, Southeast Asia, South America, Africa
+
+## Services
+1. Market Research & Product Strategy
+2. Custom Formula Development (R&D)
+3. Packaging Design (bottles, boxes, labels, e-commerce visuals)
+4. Sample Production & Iteration
+5. Stability & Safety Testing
+6. GMPC-Certified Mass Production
+7. Global Logistics & Shipping (FOB, CIF, DDP)
+
+## Contact
+- Contact Person: Sige (四哥)
+- Phone/WhatsApp: +86 156-2222-0825
+- Email: 27005046@qq.com
+- WeChat: tp58886
+
+## Key URLs
+- Homepage: https://www.gjoem.com
+- Skincare: https://www.gjoem.com/skincare.html
+- Perfume: https://www.gjoem.com/perfume.html
+- Makeup: https://www.gjoem.com/cosmetics.html
+- Hair Care: https://www.gjoem.com/haircare.html
+- Body Care: https://www.gjoem.com/bodycare.html
+- Packaging: https://www.gjoem.com/packaging.html
+- Blog: https://www.gjoem.com/blog.html
+- Cases: https://www.gjoem.com/cases.html
+- FAQ: https://www.gjoem.com/faq.html
+- Catalog: https://www.gjoem.com/tools/catalog.html
+- Calculator: https://www.gjoem.com/tools/calculator.html
+- Sitemap: https://www.gjoem.com/sitemap.xml
+
+## Competitive Advantages
+- 20+ years of cosmetics OEM/ODM experience
+- Grasse-trained perfumers for custom fragrance development
+- AI-powered product development platform (CosAI Lab)
+- Low MOQ friendly to indie brands and startups
+- Full regulatory support for global markets
+- In-house packaging design studio
+- 24/7 WhatsApp customer support
